@@ -4,161 +4,286 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [businessDropdown, setBusinessDropdown] = useState(false);
-  const [lang, setLang] = useState('ID');
+  const [unitBisnisDropdown, setUnitBisnisDropdown] = useState(false);
+  const [activeMenu, setActiveMenu] = useState('beranda');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      const sections = ['beranda', 'profil-perusahaan', 'unit-bisnis', 'milestone', 'penghargaan', 'informasi-investor', 'kontak'];
+      const scrollPos = window.scrollY + 120;
+      for (const s of sections) {
+        const el = document.getElementById(s);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveMenu(s);
+            break;
+          }
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 transition-all duration-300">
-      {/* Top Bar for Language & Quick Stock */}
-      <div className="bg-[#0b1329] text-gray-300 text-xs py-1.5 border-b border-gray-800">
-        <div className="site-container flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="font-semibold text-white">IDX: NUSA</span> (Nusantara Satu Properti Tbk)
-            </span>
-            <span className="hidden sm:inline text-gray-500">|</span>
-            <span className="hidden sm:inline text-gray-400">Hubungan Investor: ir@nusantarasatuproperti.com</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
-              <button 
-                onClick={() => setLang('ID')} 
-                className={`font-semibold px-1 rounded transition-colors ${lang === 'ID' ? 'text-amber-400 bg-slate-700' : 'text-gray-400 hover:text-white'}`}
-              >
-                ID
-              </button>
-              <span className="text-gray-600">/</span>
-              <button 
-                onClick={() => setLang('EN')} 
-                className={`font-semibold px-1 rounded transition-colors ${lang === 'EN' ? 'text-amber-400 bg-slate-700' : 'text-gray-400 hover:text-white'}`}
-              >
-                EN
-              </button>
+    <header className="w-full sticky top-0 z-50 bg-white shadow-sm font-sans">
+      {/* 1. Top Bar (Dark Navy with Flags) */}
+      <div className="bg-[#19375e] text-white py-1.5 px-4 sm:px-10 flex items-center justify-end">
+        <div className="flex items-center gap-2 text-xs">
+          {/* Indonesia Flag */}
+          <button 
+            title="Bahasa Indonesia"
+            className="w-5 h-3.5 border border-white/30 overflow-hidden rounded-[2px] hover:opacity-80 transition-opacity flex flex-col"
+          >
+            <div className="h-1/2 bg-[#CE1126]"></div>
+            <div className="h-1/2 bg-white"></div>
+          </button>
+          {/* US / English Flag */}
+          <button 
+            title="English"
+            className="w-5 h-3.5 border border-white/30 overflow-hidden rounded-[2px] hover:opacity-80 transition-opacity relative bg-[#B22234]"
+          >
+            <div className="absolute top-0 left-0 w-2.5 h-2 bg-[#3C3B6E] flex items-center justify-center">
+              <span className="text-[6px] text-white leading-none">&#9733;</span>
             </div>
-          </div>
+            <div className="h-[2px] bg-white mt-[3px]"></div>
+            <div className="h-[2px] bg-white mt-[2px]"></div>
+            <div className="h-[2px] bg-white mt-[2px]"></div>
+          </button>
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className={`w-full py-4 transition-all duration-300 ${isScrolled ? 'nav-glass shadow-md py-3' : 'bg-white'}`}>
-        <div className="site-container flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group text-decoration-none">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-600 to-amber-700 flex items-center justify-center text-white font-serif font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
-              N
-            </div>
-            <div>
-              <span className="block font-bold tracking-tight text-lg text-slate-900 leading-tight">
-                NUSANTARA SATU
-              </span>
-              <span className="block text-[10px] tracking-[2.5px] uppercase font-semibold text-amber-700">
-                PROPERTI TBK
-              </span>
-            </div>
+      {/* 2. Main Header / Navigation */}
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
+        {/* Brand Logo */}
+        <Link href="#beranda" className="flex items-center gap-2 group">
+          {/* Exact Logo Shape recreation: stylized curved wave icon in cyan */}
+          <div className="w-10 h-10 flex items-center justify-center">
+            <svg viewBox="0 0 100 80" className="w-10 h-8">
+              <path
+                d="M15,40 C15,20 35,10 65,10 C85,10 90,25 75,32 C60,39 30,35 25,48 C20,61 40,70 70,70 C90,70 95,55 95,55"
+                fill="none"
+                stroke="#0099d8"
+                strokeWidth="11"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M30,22 C40,16 65,16 75,25"
+                fill="none"
+                stroke="#19375e"
+                strokeWidth="7"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-[#19375e] uppercase">
+              NUSANTARA<span className="font-extrabold text-[#0099d8]">SATU</span>
+            </span>
+            <span className="text-[9px] font-bold text-[#19375e] tracking-wider uppercase opacity-90 hidden sm:inline">
+              PROPERTI TBK
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Menu */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-bold tracking-wider text-[#19375e] uppercase">
+          <Link
+            href="#beranda"
+            onClick={() => setActiveMenu('beranda')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'beranda' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
+          >
+            Beranda
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-700">
-            <Link href="#beranda" className="hover:text-amber-600 transition-colors">Beranda</Link>
-            <Link href="#profil" className="hover:text-amber-600 transition-colors">Profil Perusahaan</Link>
-            
-            {/* Unit Bisnis Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setBusinessDropdown(true)}
-              onMouseLeave={() => setBusinessDropdown(false)}
-            >
-              <button className="flex items-center gap-1 hover:text-amber-600 transition-colors py-2">
-                <span>Unit Bisnis</span>
-                <svg className={`w-4 h-4 transition-transform ${businessDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {businessDropdown && (
-                <div className="absolute top-full left-0 w-60 bg-white rounded-lg shadow-xl border border-slate-100 py-2 animate-fadeIn z-50">
-                  <Link href="#properti" className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition-colors">
-                    <span className="font-semibold block">Properti Residensial</span>
-                    <span className="text-xs text-slate-500">Amaya Home Resort & The Amaya</span>
-                  </Link>
-                  <Link href="#perhotelan" className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition-colors border-t border-slate-50">
-                    <span className="font-semibold block">Hospitality & Hotel</span>
-                    <span className="text-xs text-slate-500">Allstay Semarang & Yogyakarta</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link href="#milestone" className="hover:text-amber-600 transition-colors">Jejak Langkah</Link>
-            <Link href="#penghargaan" className="hover:text-amber-600 transition-colors">Penghargaan</Link>
-            <Link href="#investor" className="hover:text-amber-600 transition-colors">Investor</Link>
-            <Link href="#kontak" className="hover:text-amber-600 transition-colors">Kontak</Link>
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link 
-              href="https://wa.me/6281234567890?text=Halo%20Nusantara%20Satu%20Properti,%20saya%20tertarik%20dengan%20proyek%20Anda" 
-              target="_blank"
-              className="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-md flex items-center gap-2 transition-all hover:shadow-lg"
-            >
-              <span>Hubungi Kami</span>
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-slate-900 focus:outline-none"
-            aria-label="Toggle menu"
+          <Link
+            href="#profil-perusahaan"
+            onClick={() => setActiveMenu('profil-perusahaan')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'profil-perusahaan' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
+            Profil Perusahaan
+          </Link>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-4 shadow-xl">
-            <div className="flex flex-col gap-3 font-medium text-slate-800">
-              <Link href="#beranda" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50">Beranda</Link>
-              <Link href="#profil" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50">Profil Perusahaan</Link>
-              <Link href="#properti" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50 pl-2 text-amber-700">↳ Properti (Amaya Resort)</Link>
-              <Link href="#perhotelan" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50 pl-2 text-amber-700">↳ Perhotelan (Allstay)</Link>
-              <Link href="#milestone" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50">Jejak Langkah</Link>
-              <Link href="#penghargaan" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50">Penghargaan</Link>
-              <Link href="#investor" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-slate-50">Hubungan Investor</Link>
-              <Link href="#kontak" onClick={() => setMobileMenuOpen(false)} className="py-2">Kontak</Link>
-              <Link 
-                href="https://wa.me/6281234567890" 
-                target="_blank" 
-                className="mt-2 text-center bg-amber-600 text-white py-2.5 rounded font-semibold text-sm"
-              >
-                Konsultasi WhatsApp
-              </Link>
-            </div>
+          {/* Dropdown Unit Bisnis */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setUnitBisnisDropdown(true)}
+            onMouseLeave={() => setUnitBisnisDropdown(false)}
+          >
+            <button
+              onClick={() => {
+                setActiveMenu('unit-bisnis');
+                const el = document.getElementById('unit-bisnis');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`py-2 inline-flex items-center gap-1 transition-colors hover:text-[#0099d8] ${
+                activeMenu === 'unit-bisnis' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+              }`}
+            >
+              <span>Unit Bisnis</span>
+              <svg className="w-3 h-3 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {unitBisnisDropdown && (
+              <div className="absolute top-full left-0 w-44 bg-white border border-slate-100 shadow-xl rounded-b-md py-2 z-50 animate-fadeIn">
+                <Link
+                  href="#unit-bisnis"
+                  onClick={() => setUnitBisnisDropdown(false)}
+                  className="block px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0099d8] transition-colors"
+                >
+                  Perhotelan (Allstay)
+                </Link>
+                <Link
+                  href="#unit-bisnis"
+                  onClick={() => setUnitBisnisDropdown(false)}
+                  className="block px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0099d8] transition-colors"
+                >
+                  Properti (The Amaya)
+                </Link>
+              </div>
+            )}
           </div>
-        )}
-      </nav>
+
+          <Link
+            href="#informasi-investor"
+            onClick={() => setActiveMenu('informasi-investor')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'informasi-investor' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
+          >
+            Informasi Investor
+          </Link>
+
+          <Link
+            href="#tata-kelola"
+            onClick={() => setActiveMenu('tata-kelola')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'tata-kelola' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
+          >
+            Tata Kelola
+          </Link>
+
+          <Link
+            href="#berita"
+            onClick={() => setActiveMenu('berita')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'berita' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
+          >
+            Berita
+          </Link>
+
+          <Link
+            href="#csr"
+            onClick={() => setActiveMenu('csr')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'csr' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
+          >
+            CSR
+          </Link>
+
+          <Link
+            href="#karir"
+            onClick={() => setActiveMenu('karir')}
+            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
+              activeMenu === 'karir' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
+            }`}
+          >
+            Karir
+          </Link>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="lg:hidden p-2 text-[#19375e] hover:text-[#0099d8] focus:outline-none"
+          aria-label="Toggle navigation"
+        >
+          {mobileMenuOpen ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-sm text-[#19375e] uppercase shadow-lg">
+          <Link
+            href="#beranda"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Beranda
+          </Link>
+          <Link
+            href="#profil-perusahaan"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Profil Perusahaan
+          </Link>
+          <Link
+            href="#unit-bisnis"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Unit Bisnis (Amaya &amp; Allstay)
+          </Link>
+          <Link
+            href="#informasi-investor"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Informasi Investor
+          </Link>
+          <Link
+            href="#tata-kelola"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Tata Kelola
+          </Link>
+          <Link
+            href="#berita"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Berita
+          </Link>
+          <Link
+            href="#csr"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            CSR
+          </Link>
+          <Link
+            href="#karir"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-1 hover:text-[#0099d8]"
+          >
+            Karir
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
