@@ -29,68 +29,66 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] font-sans">
-      {/* 1. Slim Top Bar with exact flags */}
-      <div className="bg-[#19375e] text-white h-[28px] px-4 sm:px-12 flex items-center justify-end">
-        <div className="flex items-center gap-2">
-          {/* Indonesian Flag */}
-          <button 
-            title="Bahasa Indonesia"
-            className="w-[19px] h-[13px] border border-white/20 overflow-hidden flex flex-col hover:opacity-85 transition-opacity"
-          >
-            <div className="h-1/2 bg-[#CE1126]"></div>
-            <div className="h-1/2 bg-white"></div>
-          </button>
-          {/* US / English Flag */}
-          <button 
-            title="English"
-            className="w-[19px] h-[13px] border border-white/20 overflow-hidden relative bg-[#B22234] hover:opacity-85 transition-opacity"
-          >
-            <div className="absolute top-0 left-0 w-[9px] h-[7px] bg-[#3C3B6E] flex items-center justify-center">
-              <span className="text-[5px] text-white leading-none">&#9733;</span>
-            </div>
-            <div className="h-[2px] bg-white mt-[2.5px]"></div>
-            <div className="h-[2px] bg-white mt-[1.5px]"></div>
-            <div className="h-[2px] bg-white mt-[1.5px]"></div>
-          </button>
+    <header className="w-full sticky top-0 z-50 bg-white shadow-[0_0_15px_0_rgba(0,0,0,0.08)]">
+      {/* 1. Top Flag Bar matching original #244370 */}
+      <div className="bg-[#244370] text-white py-1.5 px-4 sm:px-8">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-end">
+          <div className="flex items-center gap-[15px]">
+            {/* Indonesian Flag (20px x 15px) */}
+            <button 
+              title="Bahasa Indonesia"
+              className="w-[20px] h-[15px] border border-white/20 overflow-hidden flex flex-col hover:opacity-80 transition-opacity"
+            >
+              <div className="h-1/2 bg-[#CE1126]"></div>
+              <div className="h-1/2 bg-white"></div>
+            </button>
+            {/* US Flag (20px x 15px) */}
+            <button 
+              title="English"
+              className="w-[20px] h-[15px] border border-white/20 overflow-hidden relative bg-[#B22234] hover:opacity-80 transition-opacity"
+            >
+              <div className="absolute top-0 left-0 w-[10px] h-[8px] bg-[#3C3B6E] flex items-center justify-center">
+                <span className="text-[6px] text-white leading-none">&#9733;</span>
+              </div>
+              <div className="h-[2px] bg-white mt-[3px]"></div>
+              <div className="h-[2px] bg-white mt-[2px]"></div>
+              <div className="h-[2px] bg-white mt-[2px]"></div>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* 2. Main Navbar with exact proportions and concise logo */}
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 h-[68px] sm:h-[74px] flex items-center justify-between">
-        {/* Brand Logo: Clean SVG Image matching kotasatu dimensions */}
-        <Link href="#beranda" className="flex items-center">
-          <img
-            src="/images/nusasatu-logo.svg"
-            alt="Nusasatu Properti Tbk"
-            className="h-[36px] sm:h-[42px] w-auto object-contain"
-          />
-        </Link>
+      {/* 2. Main Navbar with exact dimensions and spacing */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 min-h-[76px] sm:min-h-[80px] flex items-center justify-between">
+        {/* Left: Brand Logo */}
+        <div className="flex-shrink-0">
+          <Link href="#beranda" className="flex items-center">
+            <img
+              src="/images/nusasatu-logo.svg"
+              alt="Nusasatu Properti Tbk"
+              className="w-[195px] sm:w-[215px] h-auto object-contain block"
+            />
+          </Link>
+        </div>
 
-        {/* Desktop Menu - Exact font size, spacing, and underline */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[12.5px] font-bold tracking-[0.04em] text-[#19375e] uppercase">
+        {/* Right: Navigation Menu with exact 14px Gotham/Sans, 1.2px letter-spacing, #2A2A2A */}
+        <nav className="hidden lg:flex items-center justify-end flex-1 ml-4 xl:ml-8">
           {/* BERANDA */}
           <Link
             href="#beranda"
             onClick={() => setActiveMenu('beranda')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'beranda' ? 'active' : ''}`}
           >
-            <span>BERANDA</span>
-            {activeMenu === 'beranda' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            BERANDA
           </Link>
 
           {/* PROFIL PERUSAHAAN */}
           <Link
             href="#profil-perusahaan"
             onClick={() => setActiveMenu('profil-perusahaan')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'profil-perusahaan' ? 'active' : ''}`}
           >
-            <span>PROFIL PERUSAHAAN</span>
-            {activeMenu === 'profil-perusahaan' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            PROFIL PERUSAHAAN
           </Link>
 
           {/* UNIT BISNIS ˅ */}
@@ -105,15 +103,12 @@ export default function Navbar() {
                 const el = document.getElementById('unit-bisnis');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="relative py-1.5 inline-flex items-center gap-1.5 transition-colors hover:text-[#0099d8]"
+              className={`nav-link-item gap-1.5 ${activeMenu === 'unit-bisnis' ? 'active' : ''}`}
             >
               <span>UNIT BISNIS</span>
-              <svg className="w-3 h-3 text-[#19375e] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-2.5 h-2.5 text-[#2A2A2A] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
               </svg>
-              {activeMenu === 'unit-bisnis' && (
-                <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-              )}
             </button>
 
             {unitBisnisDropdown && (
@@ -121,16 +116,16 @@ export default function Navbar() {
                 <Link
                   href="#unit-bisnis"
                   onClick={() => setUnitBisnisDropdown(false)}
-                  className="block px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0099d8] transition-colors"
+                  className="block px-4 py-2.5 text-[13px] font-[500] text-[#2A2A2A] hover:bg-slate-50 hover:text-[#000077] transition-colors"
                 >
-                  Perhotelan (Allstay)
+                  Perhotelan
                 </Link>
                 <Link
                   href="#unit-bisnis"
                   onClick={() => setUnitBisnisDropdown(false)}
-                  className="block px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0099d8] transition-colors"
+                  className="block px-4 py-2.5 text-[13px] font-[500] text-[#2A2A2A] hover:bg-slate-50 hover:text-[#000077] transition-colors"
                 >
-                  Properti (Amaya)
+                  Properti
                 </Link>
               </div>
             )}
@@ -140,67 +135,52 @@ export default function Navbar() {
           <Link
             href="#informasi-investor"
             onClick={() => setActiveMenu('informasi-investor')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'informasi-investor' ? 'active' : ''}`}
           >
-            <span>INFORMASI INVESTOR</span>
-            {activeMenu === 'informasi-investor' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            INFORMASI INVESTOR
           </Link>
 
           {/* TATA KELOLA */}
           <Link
             href="#tata-kelola"
             onClick={() => setActiveMenu('tata-kelola')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'tata-kelola' ? 'active' : ''}`}
           >
-            <span>TATA KELOLA</span>
-            {activeMenu === 'tata-kelola' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            TATA KELOLA
           </Link>
 
           {/* BERITA */}
           <Link
             href="#berita"
             onClick={() => setActiveMenu('berita')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'berita' ? 'active' : ''}`}
           >
-            <span>BERITA</span>
-            {activeMenu === 'berita' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            BERITA
           </Link>
 
           {/* CSR */}
           <Link
             href="#csr"
             onClick={() => setActiveMenu('csr')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'csr' ? 'active' : ''}`}
           >
-            <span>CSR</span>
-            {activeMenu === 'csr' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            CSR
           </Link>
 
           {/* KARIR */}
           <Link
             href="#karir"
             onClick={() => setActiveMenu('karir')}
-            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
+            className={`nav-link-item ${activeMenu === 'karir' ? 'active' : ''}`}
           >
-            <span>KARIR</span>
-            {activeMenu === 'karir' && (
-              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
-            )}
+            KARIR
           </Link>
         </nav>
 
-        {/* Mobile Burger Menu Button */}
+        {/* Mobile Burger Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-[#19375e] hover:text-[#0099d8] focus:outline-none"
+          className="lg:hidden p-2 text-[#2A2A2A] hover:text-[#000077] focus:outline-none"
           aria-label="Toggle navigation"
         >
           {mobileMenuOpen ? (
@@ -217,7 +197,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-xs text-[#19375e] uppercase shadow-lg">
+        <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 font-[500] text-[13px] text-[#2A2A2A] tracking-[1.2px] uppercase shadow-lg">
           <Link href="#beranda" onClick={() => setMobileMenuOpen(false)} className="block py-1">Beranda</Link>
           <Link href="#profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">Profil Perusahaan</Link>
           <Link href="#unit-bisnis" onClick={() => setMobileMenuOpen(false)} className="block py-1">Unit Bisnis</Link>

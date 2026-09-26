@@ -16,8 +16,6 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -146,8 +144,34 @@ html {
   cursor: pointer;
   backdrop-filter: blur(4px);
 }
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #ffffff;
-  transform: translateY(-2px);
+/* Exact Navigation Menu Styles matching kotasatuproperti.com */
+.nav-link-item {
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #2A2A2A;
+  padding: 18px 15px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
 }
+.nav-link-item:hover {
+  color: #000077;
+}
+.nav-link-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 15px;
+  right: 15px;
+  height: 2px;
+  background-color: #2A2A2A;
+}
+
