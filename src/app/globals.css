@@ -152,7 +152,8 @@ html {
   text-transform: uppercase;
   letter-spacing: 1.2px;
   color: #1c1c1c;
-  padding: 18px 15px;
+  padding: 18px 11px;
+  white-space: nowrap;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -161,6 +162,12 @@ html {
   cursor: pointer;
   background: transparent;
   border: none;
+  flex-shrink: 0;
+}
+@media (min-width: 1280px) {
+  .nav-link-item {
+    padding: 18px 14px;
+  }
 }
 .nav-link-item:hover {
   color: #000077;
@@ -169,9 +176,15 @@ html {
   content: '';
   position: absolute;
   bottom: 8px;
-  left: 15px;
-  right: 15px;
+  left: 11px;
+  right: 11px;
   height: 2px;
   background-color: #1c1c1c;
+}
+@media (min-width: 1280px) {
+  .nav-link-item.active::after {
+    left: 14px;
+    right: 14px;
+  }
 }
 

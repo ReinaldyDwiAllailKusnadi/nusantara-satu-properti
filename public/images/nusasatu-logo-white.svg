@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" width="520" height="100">
+  <!-- All-White Icon matching user's footer screenshot -->
+  <g transform="translate(10, 10)">
+    <!-- White upper ribbon curve -->
+    <path d="M 36,18 C 16,18 8,36 8,54 C 8,78 28,92 56,92 C 84,92 98,76 98,60 C 98,40 74,36 48,31 C 26,27 18,21 18,13 C 18,5 29,2 42,2 C 58,2 74,9 84,18" 
+          fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- White bottom accent -->
+    <path d="M 20,54 C 20,70 36,80 56,80 C 78,80 86,68 86,60" 
+          fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" />
+  </g>
+  
+  <!-- Main Brand Name NUSASATU in White -->
+  <text x="125" y="69" font-family="'Plus Jakarta Sans', 'Gotham Bold', 'Montserrat', Arial, sans-serif" font-size="52" font-weight="800" fill="#FFFFFF" letter-spacing="-1">NUSASATU</text>
+  
+  <!-- Subscript PROPERTI TBK in White -->
+  <text x="408" y="66" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" opacity="0.95" letter-spacing="1.5">PROPERTI TBK</text>
+</svg>

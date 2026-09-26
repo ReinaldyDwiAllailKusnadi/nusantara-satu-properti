@@ -10,10 +10,10 @@ const awardImages = [
 
 export default function AwardsSection() {
   return (
-    <section id="penghargaan" className="py-20 sm:py-24 bg-[#FDFDFD]">
+    <section id="penghargaan" className="pt-16 sm:pt-20 pb-8 sm:pb-10 bg-[#FDFDFD]">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-8">
         {/* Centered Heading with #22406F divider matching original */}
-        <div className="text-center mb-12 sm:mb-14">
+        <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#22406F] uppercase tracking-[1.5px]">
             PENGHARGAAN
           </h2>

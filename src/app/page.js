@@ -4,8 +4,6 @@ import CompanyProfile from '@/components/CompanyProfile';
 import Milestones from '@/components/Milestones';
 import BusinessUnits from '@/components/BusinessUnits';
 import AwardsSection from '@/components/AwardsSection';
-import InvestorRelations from '@/components/InvestorRelations';
-import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -18,8 +16,6 @@ export default function Home() {
         <Milestones />
         <BusinessUnits />
         <AwardsSection />
-        <InvestorRelations />
-        <ContactSection />
       </main>
       <Footer />
     </>
