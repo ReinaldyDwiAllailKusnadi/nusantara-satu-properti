@@ -1,147 +1,142 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const milestonesList = [
-  {
-    year: '2012',
-    img: '/images/Kota-Satu-24-September-2024.webp',
-    title: 'Pendirian Nusantara Satu Properti',
-    desc: 'Pendirian PT Nusantara Satu Properti Tbk di Semarang, Jawa Tengah.'
-  },
-  {
-    year: '2013',
-    img: '/images/Kota-Satu-24-September-2024-1.png',
-    title: 'Mulai Pengembangan Amaya Home Resort',
-    desc: 'Pencanangan proyek kawasan hunian resort hijau perdana di Ungaran.'
-  },
-  {
-    year: '2014',
-    img: '/images/Kota-Satu-24-September-2024-2.png',
-    title: 'Pendirian PT NSP Persada & Manajemen',
-    desc: 'Pembentukan entitas anak operasional properti dan hospitality.'
-  },
-  {
-    year: '2014',
-    img: '/images/Kota-Satu-24-September-2024-3.png',
-    title: 'Pengembangan Allstay Hotel Semarang & Yogyakarta',
-    desc: 'Memulai pembangunan Allstay Hotel Semarang dan Allstay Ecotel Yogyakarta.'
-  },
-  {
-    year: '2014',
-    img: '/images/Kota-Satu-24-September-2024-4.png',
-    title: 'Pengembangan Unit Rumah Fase 1 Amaya',
-    desc: 'Realisasi pembangunan klaster hunian tahap pertama The Amaya.'
-  },
-  {
-    year: '2015',
-    img: '/images/Kota-Satu-24-September-2024-5.png',
-    title: 'Pengembangan Unit Rumah Fase 2 Amaya',
-    desc: 'Ekspansi lanjutan klaster perumahan Amaya Home Resort.'
-  },
-  {
-    year: '2016',
-    img: '/images/Kota-Satu-24-September-2024-4.png',
-    title: 'Peluncuran Fase 3 Amaya Home Resort',
-    desc: 'Perluasan pembangunan hunian eksklusif tahap ketiga.'
-  },
-  {
-    year: '2016',
-    img: '/images/Kota-Satu-24-September-2024-3.png',
-    title: 'Beroperasi Allstay Semarang & Yogyakarta',
-    desc: 'Allstay Hotel Semarang Bintang 3 & Allstay Ecotel Yogyakarta resmi beroperasi.'
-  },
-  {
-    year: '2017',
-    img: '/images/Kota-Satu-24-September-2024-2.png',
-    title: 'Holding Company',
-    desc: 'PT Nusantara Satu Properti Tbk resmi menjadi holding company terpadu.'
-  },
-  {
-    year: '2018',
-    img: '/images/Kota-Satu-24-September-2024-1.png',
-    title: 'IPO di Bursa Efek Indonesia',
-    desc: 'Pencatatan saham perdana di Bursa Efek Indonesia dengan Ticker NUSA.'
-  },
-  {
-    year: '2021',
-    img: '/images/Kota-Satu-24-September-2024.webp',
-    title: 'Penandatanganan MOU Bumi Sekartama',
-    desc: 'Kemitraan strategis ekspansi landbank dan pengembangan kawasan baru.'
-  }
+const milestoneCards = [
+  { img: '/images/Kota-Satu-24-September-2024.webp', alt: 'Milestone 2012 - Pendirian Perusahaan' },
+  { img: '/images/Kota-Satu-24-September-2024-1.png', alt: 'Milestone 2013 - Pengembangan Amaya Home Resort' },
+  { img: '/images/Kota-Satu-24-September-2024-2.png', alt: 'Milestone 2014 - Pendirian PT Persada & Manajemen' },
+  { img: '/images/Kota-Satu-24-September-2024-3.png', alt: 'Milestone 2014 - Allstay Hotel Semarang & Yogyakarta' },
+  { img: '/images/Kota-Satu-24-September-2024-4.png', alt: 'Milestone 2014 - Rumah Fase 1 Amaya' },
+  { img: '/images/Kota-Satu-24-September-2024-5.png', alt: 'Milestone 2015 - Rumah Fase 2 Amaya' },
+  { img: '/images/Kota-Satu-24-September-2024-10.png', alt: 'Milestone 2016 - Fase 3 Amaya' },
+  { img: '/images/Kota-Satu-24-September-2024-8.png', alt: 'Milestone 2016 - Beroperasi Allstay Hotel' },
+  { img: '/images/Kota-Satu-24-September-2024-9.png', alt: 'Milestone 2017 - Holding Company' },
+  { img: '/images/Kota-Satu-24-September-2024-7.png', alt: 'Milestone 2018 - IPO di Bursa Efek Indonesia' },
+  { img: '/images/Kota-Satu-24-September-2024-6-1.png', alt: 'Milestone 2021 - MOU Bumi Sekartama' },
 ];
 
+// Tripled for seamless infinite looping
+const extendedItems = [...milestoneCards, ...milestoneCards, ...milestoneCards];
+
 export default function Milestones() {
-  const [startIndex, setStartIndex] = useState(0);
-  const itemsVisible = 5;
+  const [currentIndex, setCurrentIndex] = useState(milestoneCards.length);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const autoPlayRef = useRef(null);
+
+  // Responsive items count
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(2.5);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(4);
+      } else {
+        setVisibleCount(6);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Autoplay function - slides every 2.5 seconds
+  useEffect(() => {
+    if (isHovered) {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+      return;
+    }
+
+    autoPlayRef.current = setInterval(() => {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
+    }, 2500);
+
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, [isHovered]);
+
+  // Handle wrap-around when reaching ends
+  const handleTransitionEnd = () => {
+    if (currentIndex >= milestoneCards.length * 2) {
+      setIsTransitioning(false);
+      setCurrentIndex(currentIndex - milestoneCards.length);
+    } else if (currentIndex < milestoneCards.length) {
+      setIsTransitioning(false);
+      setCurrentIndex(currentIndex + milestoneCards.length);
+    }
+  };
 
   const handlePrev = () => {
-    setStartIndex((prev) => (prev > 0 ? prev - 1 : milestonesList.length - itemsVisible));
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
   };
 
   const handleNext = () => {
-    setStartIndex((prev) => (prev + itemsVisible < milestonesList.length ? prev + 1 : 0));
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
   };
 
   return (
-    <section id="milestone" className="py-12 bg-[#f8f9fa] border-y border-slate-200">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
-        {/* Carousel Header Controls */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <div className="w-12 h-1 bg-[#19375e] mb-2"></div>
-            <h3 className="text-xl sm:text-2xl font-black text-[#19375e] uppercase tracking-tight">
-              Milestones
-            </h3>
-          </div>
+    <section 
+      id="milestone" 
+      className="py-10 bg-white relative overflow-hidden select-none"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 relative">
+        {/* Left Arrow Button */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#1B477A]/85 hover:bg-[#1B477A] text-white flex items-center justify-center shadow-lg transition-all hover:scale-110 focus:outline-none"
+          aria-label="Previous Milestone"
+        >
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrev}
-              className="w-9 h-9 rounded-full bg-white border border-slate-300 hover:border-[#19375e] text-[#19375e] flex items-center justify-center transition-colors shadow-sm"
-              aria-label="Previous"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={handleNext}
-              className="w-9 h-9 rounded-full bg-white border border-slate-300 hover:border-[#19375e] text-[#19375e] flex items-center justify-center transition-colors shadow-sm"
-              aria-label="Next"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-        </div>
+        {/* Right Arrow Button */}
+        <button
+          onClick={handleNext}
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#1B477A]/85 hover:bg-[#1B477A] text-white flex items-center justify-center shadow-lg transition-all hover:scale-110 focus:outline-none"
+          aria-label="Next Milestone"
+        >
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
 
-        {/* Milestone Cards Carousel */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {milestonesList.slice(startIndex, startIndex + itemsVisible).map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-4 rounded border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center group"
-            >
-              <div className="w-24 h-28 flex items-center justify-center mb-3">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="max-h-24 max-w-full object-contain group-hover:scale-105 transition-transform"
-                />
+        {/* Carousel Viewport */}
+        <div className="overflow-hidden py-4">
+          <div
+            className="flex"
+            style={{
+              transform: `translateX(-${(currentIndex * 100) / visibleCount}%)`,
+              transition: isTransitioning ? 'transform 650ms cubic-bezier(0.25, 1, 0.5, 1)' : 'none',
+            }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {extendedItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex-shrink-0 px-2 sm:px-3 flex items-center justify-center"
+                style={{ width: `${100 / visibleCount}%` }}
+              >
+                <div className="w-full max-w-[170px] cursor-pointer transform hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={item.img}
+                    alt={item.alt}
+                    className="w-full h-auto object-contain block drop-shadow-sm pointer-events-none"
+                    loading="eager"
+                  />
+                </div>
               </div>
-              <div className="inline-block px-2 py-0.5 rounded bg-slate-100 text-[#19375e] font-extrabold text-xs mb-1.5">
-                {item.year}
-              </div>
-              <h4 className="text-xs font-bold text-slate-800 line-clamp-1 mb-1">
-                {item.title}
-              </h4>
-              <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
