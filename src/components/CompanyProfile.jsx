@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function CompanyProfile() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -35,15 +36,15 @@ export default function CompanyProfile() {
               PT Nusasatu Properti Tbk (“Perseroan”), berkedudukan di Kabupaten Semarang, dengan akta pendiriannya sebagaimana dimuat dalam Akta Pendirian Perseroan Terbatas No. 6 tanggal 3 Oktober 2012, dibuat di hadapan Maria Yosefa Deni, S.H., Notaris di Kota Semarang. Akta Pendirian Perseroan telah memperoleh pengesahan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia sebagaimana ternyata dari Surat Keputusannya No. AHU-58590.AH.01.01.Tahun 2012 tanggal 19 November 2012.
             </p>
 
-            <button
-              onClick={() => setModalOpen(!modalOpen)}
-              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#19375e] hover:bg-[#0f233d] text-white text-xs font-bold uppercase tracking-wider rounded-sm transition-all shadow-sm"
+            <Link
+              href="/profil-perusahaan"
+              className="inline-flex items-center gap-2 text-[#19375e] hover:text-blue-700 font-bold text-[14px] transition-colors group mt-2"
             >
-              <span>{modalOpen ? 'Tutup Rincian' : 'Lihat Lebih Lengkap'}</span>
-              <svg className={`w-3.5 h-3.5 transition-transform ${modalOpen ? 'rotate-90' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>Lihat lebih lengkap</span>
+              <svg className="w-4 h-4 text-[#19375e] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
 

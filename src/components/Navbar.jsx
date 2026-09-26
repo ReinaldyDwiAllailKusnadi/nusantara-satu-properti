@@ -96,7 +96,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center justify-end flex-1 ml-4 xl:ml-8">
             {/* BERANDA */}
             <Link
-              href="#beranda"
+              href="/"
               onClick={() => setActiveMenu('beranda')}
               className={`nav-link-item ${activeMenu === 'beranda' ? 'active' : ''}`}
             >
@@ -105,7 +105,7 @@ export default function Navbar() {
 
             {/* PROFIL PERUSAHAAN */}
             <Link
-              href="#profil-perusahaan"
+              href="/profil-perusahaan"
               onClick={() => setActiveMenu('profil-perusahaan')}
               className={`nav-link-item ${activeMenu === 'profil-perusahaan' ? 'active' : ''}`}
             >
@@ -118,31 +118,28 @@ export default function Navbar() {
               onMouseEnter={() => setUnitBisnisDropdown(true)}
               onMouseLeave={() => setUnitBisnisDropdown(false)}
             >
-              <button
-                onClick={() => {
-                  setActiveMenu('unit-bisnis');
-                  const el = document.getElementById('unit-bisnis');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
+              <Link
+                href="/#unit-bisnis"
+                onClick={() => setActiveMenu('unit-bisnis')}
                 className={`nav-link-item gap-1.5 ${activeMenu === 'unit-bisnis' ? 'active' : ''}`}
               >
                 <span>UNIT BISNIS</span>
                 <svg className="w-2.5 h-2.5 text-[#1c1c1c] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                 </svg>
-              </button>
+              </Link>
 
               {unitBisnisDropdown && (
                 <div className="absolute top-full left-0 w-48 bg-white border border-slate-100 shadow-xl rounded-b-md py-2 z-50">
                   <Link
-                    href="#unit-bisnis"
+                    href="/#unit-bisnis"
                     onClick={() => setUnitBisnisDropdown(false)}
                     className="block px-4 py-2.5 text-[13px] font-bold text-[#1c1c1c] hover:bg-slate-50 hover:text-[#000077] transition-colors"
                   >
                     Perhotelan
                   </Link>
                   <Link
-                    href="#unit-bisnis"
+                    href="/#unit-bisnis"
                     onClick={() => setUnitBisnisDropdown(false)}
                     className="block px-4 py-2.5 text-[13px] font-bold text-[#1c1c1c] hover:bg-slate-50 hover:text-[#000077] transition-colors"
                   >
@@ -154,7 +151,7 @@ export default function Navbar() {
 
             {/* INFORMASI INVESTOR */}
             <Link
-              href="#informasi-investor"
+              href="/#informasi-investor"
               onClick={() => setActiveMenu('informasi-investor')}
               className={`nav-link-item ${activeMenu === 'informasi-investor' ? 'active' : ''}`}
             >
@@ -163,7 +160,7 @@ export default function Navbar() {
 
             {/* TATA KELOLA */}
             <Link
-              href="#tata-kelola"
+              href="/#tata-kelola"
               onClick={() => setActiveMenu('tata-kelola')}
               className={`nav-link-item ${activeMenu === 'tata-kelola' ? 'active' : ''}`}
             >
@@ -172,7 +169,7 @@ export default function Navbar() {
 
             {/* BERITA */}
             <Link
-              href="#berita"
+              href="/#berita"
               onClick={() => setActiveMenu('berita')}
               className={`nav-link-item ${activeMenu === 'berita' ? 'active' : ''}`}
             >
@@ -181,7 +178,7 @@ export default function Navbar() {
 
             {/* CSR */}
             <Link
-              href="#csr"
+              href="/#csr"
               onClick={() => setActiveMenu('csr')}
               className={`nav-link-item ${activeMenu === 'csr' ? 'active' : ''}`}
             >
@@ -190,7 +187,7 @@ export default function Navbar() {
 
             {/* KARIR */}
             <Link
-              href="#karir"
+              href="/#karir"
               onClick={() => setActiveMenu('karir')}
               className={`nav-link-item ${activeMenu === 'karir' ? 'active' : ''}`}
             >
@@ -220,14 +217,14 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-[13px] text-[#1c1c1c] tracking-[1.2px] uppercase shadow-lg">
-          <Link href="#beranda" onClick={() => setMobileMenuOpen(false)} className="block py-1">Beranda</Link>
-          <Link href="#profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">Profil Perusahaan</Link>
-          <Link href="#unit-bisnis" onClick={() => setMobileMenuOpen(false)} className="block py-1">Unit Bisnis</Link>
-          <Link href="#informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
-          <Link href="#tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
-          <Link href="#berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
-          <Link href="#csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>
-          <Link href="#karir" onClick={() => setMobileMenuOpen(false)} className="block py-1">Karir</Link>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-1">Beranda</Link>
+          <Link href="/profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">Profil Perusahaan</Link>
+          <Link href="/#unit-bisnis" onClick={() => setMobileMenuOpen(false)} className="block py-1">Unit Bisnis</Link>
+          <Link href="/#informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
+          <Link href="/#tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
+          <Link href="/#berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
+          <Link href="/#csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>
+          <Link href="/#karir" onClick={() => setMobileMenuOpen(false)} className="block py-1">Karir</Link>
         </div>
       )}
     </header>

@@ -57,13 +57,13 @@ export default function Footer() {
               QUICK LINKS
             </h4>
             <ul className="space-y-2.5 text-[14px] font-bold text-white tracking-wide">
-              <li><Link href="#beranda" className="hover:text-amber-300 transition-colors">BERANDA</Link></li>
-              <li><Link href="#profil-perusahaan" className="hover:text-amber-300 transition-colors">PROFIL PERUSAHAAN</Link></li>
-              <li><Link href="#profil-perusahaan" className="hover:text-amber-300 transition-colors">INFORMASI INVESTOR</Link></li>
-              <li><Link href="#profil-perusahaan" className="hover:text-amber-300 transition-colors">TATA KELOLA</Link></li>
-              <li><Link href="#profil-perusahaan" className="hover:text-amber-300 transition-colors">BERITA</Link></li>
-              <li><Link href="#profil-perusahaan" className="hover:text-amber-300 transition-colors">CSR</Link></li>
-              <li><Link href="#profil-perusahaan" className="hover:text-amber-300 transition-colors">KARIR</Link></li>
+              <li><Link href="/" className="hover:text-amber-300 transition-colors">BERANDA</Link></li>
+              <li><Link href="/profil-perusahaan" className="hover:text-amber-300 transition-colors">PROFIL PERUSAHAAN</Link></li>
+              <li><Link href="/#informasi-investor" className="hover:text-amber-300 transition-colors">INFORMASI INVESTOR</Link></li>
+              <li><Link href="/#tata-kelola" className="hover:text-amber-300 transition-colors">TATA KELOLA</Link></li>
+              <li><Link href="/#berita" className="hover:text-amber-300 transition-colors">BERITA</Link></li>
+              <li><Link href="/#csr" className="hover:text-amber-300 transition-colors">CSR</Link></li>
+              <li><Link href="/#karir" className="hover:text-amber-300 transition-colors">KARIR</Link></li>
             </ul>
           </div>
 
