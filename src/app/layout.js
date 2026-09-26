@@ -9,11 +9,11 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "PT Nusantara Satu Properti Tbk | Pengembang The Amaya & Allstay Hotel (IDX: NUSA)",
-  description: "Website resmi PT Nusantara Satu Properti Tbk (IDX: NUSA), perusahaan pengembang properti terintegrasi dan perhotelan di Indonesia. Mengembangkan kawasan The Amaya Home Resort Ungaran serta Allstay Hotel Semarang & Yogyakarta.",
+  title: "PT Nusasatu Properti Tbk | Pengembang The Amaya & Allstay Hotel (IDX: NUSA)",
+  description: "Website resmi PT Nusasatu Properti Tbk (IDX: NUSA), perusahaan pengembang properti terintegrasi dan perhotelan di Indonesia. Mengembangkan kawasan The Amaya Home Resort Ungaran serta Allstay Hotel Semarang & Yogyakarta.",
   keywords: [
-    "Nusantara Satu Properti",
-    "PT Nusantara Satu Properti Tbk",
+    "Nusasatu Properti",
+    "PT Nusasatu Properti Tbk",
     "IDX NUSA",
     "The Amaya Home Resort Ungaran",
     "Allstay Hotel Semarang",
@@ -23,24 +23,24 @@ export const metadata = {
     "investasi properti indonesia",
     "hubungan investor NUSA"
   ],
-  authors: [{ name: "PT Nusantara Satu Properti Tbk" }],
-  creator: "PT Nusantara Satu Properti Tbk",
-  publisher: "PT Nusantara Satu Properti Tbk",
-  metadataBase: new URL("https://nusantarasatuproperti.com"),
+  authors: [{ name: "PT Nusasatu Properti Tbk" }],
+  creator: "PT Nusasatu Properti Tbk",
+  publisher: "PT Nusasatu Properti Tbk",
+  metadataBase: new URL("https://nusasatuproperti.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "PT Nusantara Satu Properti Tbk | Membangun Harmoni Hunian & Hospitality",
+    title: "PT Nusasatu Properti Tbk | Membangun Harmoni Hunian & Hospitality",
     description: "Pengembang terkemuka The Amaya Home Resort dengan konsep green living serta jaringan hotel Allstay Semarang & Yogyakarta.",
-    url: "https://nusantarasatuproperti.com",
-    siteName: "PT Nusantara Satu Properti Tbk",
+    url: "https://nusasatuproperti.com",
+    siteName: "PT Nusasatu Properti Tbk",
     images: [
       {
         url: "/images/scott-graham-5fNmWej4tAA-unsplash-1-1-1024x683.jpg",
         width: 1200,
         height: 630,
-        alt: "PT Nusantara Satu Properti Tbk Corporate",
+        alt: "PT Nusasatu Properti Tbk Corporate",
       },
     ],
     locale: "id_ID",
@@ -48,7 +48,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PT Nusantara Satu Properti Tbk (IDX: NUSA)",
+    title: "PT Nusasatu Properti Tbk (IDX: NUSA)",
     description: "Pengembang properti terkemuka The Amaya Home Resort Ungaran & Allstay Hotel.",
     images: ["/images/scott-graham-5fNmWej4tAA-unsplash-1-1-1024x683.jpg"],
   },

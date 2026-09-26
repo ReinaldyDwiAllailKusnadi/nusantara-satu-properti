@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 783 160" width="783" height="160">
+  <!-- Stylized Icon on left matching KOTASATU vector logo -->
+  <g transform="translate(10, 15)">
+    <!-- Outer wave in cyan -->
+    <path d="M 45,28 C 22,28 12,48 12,70 C 12,102 38,122 75,122 C 112,122 132,100 132,78 C 132,52 100,46 64,40 C 36,35 26,27 26,16 C 26,6 40,2 58,2 C 78,2 100,10 112,22" 
+          fill="none" stroke="#0099d8" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Inner dynamic swoosh in navy -->
+    <path d="M 28,70 C 28,92 48,106 75,106 C 104,106 116,90 116,78" 
+          fill="none" stroke="#19375e" stroke-width="11" stroke-linecap="round" />
+  </g>
+  
+  <!-- Main Brand Text NUSASATU -->
+  <text x="175" y="105" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="70" font-weight="900" fill="#19375e" letter-spacing="-1">NUSASATU</text>
+  
+  <!-- Subscript PROPERTI TBK: exactly like in KOTASATU logo, small and elegant -->
+  <text x="590" y="104" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="15" font-weight="700" fill="#19375e" opacity="0.85" letter-spacing="1.5">PROPERTI TBK</text>
+</svg>

@@ -70,21 +70,13 @@ export default function Footer() {
 
           {/* Column 3: Office Addresses & Logo */}
           <div className="md:col-span-5 space-y-4">
-            {/* White Logo Branding */}
+            {/* White/Clean Logo Branding */}
             <div className="flex items-center gap-2 mb-4">
-              <svg viewBox="0 0 100 80" className="w-8 h-6">
-                <path
-                  d="M15,40 C15,20 35,10 65,10 C85,10 90,25 75,32 C60,39 30,35 25,48 C20,61 40,70 70,70 C90,70 95,55 95,55"
-                  fill="none"
-                  stroke="#0099d8"
-                  strokeWidth="11"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-lg font-black tracking-tight text-white uppercase">
-                NUSANTARA<span className="text-[#0099d8]">SATU</span>
-              </span>
+              <img
+                src="/images/nusasatu-logo.svg"
+                alt="Nusasatu Properti Tbk"
+                className="h-[36px] w-auto brightness-0 invert"
+              />
             </div>
 
             <div className="text-xs text-slate-300 space-y-3 leading-relaxed">
@@ -99,7 +91,7 @@ export default function Footer() {
                 <p className="font-bold text-white mb-0.5">Semarang Office :</p>
                 <p>Jl. Veteran No. 51 Semarang – 50231</p>
                 <p className="text-slate-400">T: +62 24 8311 001</p>
-                <p className="text-slate-400">E: info@nusantarasatuproperti.com</p>
+                <p className="text-slate-400">E: info@nusasatuproperti.com</p>
               </div>
             </div>
           </div>
@@ -108,7 +100,7 @@ export default function Footer() {
         {/* Bottom copyright */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
           <p>
-            &copy; {currentYear} <strong>PT Nusantara Satu Properti Tbk</strong>. Hak Cipta Dilindungi.
+            &copy; {currentYear} <strong>PT Nusasatu Properti Tbk</strong>. Hak Cipta Dilindungi.
           </p>
           <div className="flex items-center gap-4">
             <span>IDX: NUSA</span>

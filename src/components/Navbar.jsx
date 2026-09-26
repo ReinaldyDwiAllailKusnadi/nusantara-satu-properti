@@ -11,7 +11,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['beranda', 'profil-perusahaan', 'unit-bisnis', 'milestone', 'penghargaan', 'informasi-investor', 'kontak'];
-      const scrollPos = window.scrollY + 120;
+      const scrollPos = window.scrollY + 140;
       for (const s of sections) {
         const el = document.getElementById(s);
         if (el) {
@@ -29,14 +29,14 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white shadow-sm font-sans">
-      {/* 1. Top Bar (Dark Navy with Flags) */}
-      <div className="bg-[#19375e] text-white py-1.5 px-4 sm:px-10 flex items-center justify-end">
-        <div className="flex items-center gap-2 text-xs">
-          {/* Indonesia Flag */}
+    <header className="w-full sticky top-0 z-50 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] font-sans">
+      {/* 1. Slim Top Bar with exact flags */}
+      <div className="bg-[#19375e] text-white h-[28px] px-4 sm:px-12 flex items-center justify-end">
+        <div className="flex items-center gap-2">
+          {/* Indonesian Flag */}
           <button 
             title="Bahasa Indonesia"
-            className="w-5 h-3.5 border border-white/30 overflow-hidden rounded-[2px] hover:opacity-80 transition-opacity flex flex-col"
+            className="w-[19px] h-[13px] border border-white/20 overflow-hidden flex flex-col hover:opacity-85 transition-opacity"
           >
             <div className="h-1/2 bg-[#CE1126]"></div>
             <div className="h-1/2 bg-white"></div>
@@ -44,75 +44,56 @@ export default function Navbar() {
           {/* US / English Flag */}
           <button 
             title="English"
-            className="w-5 h-3.5 border border-white/30 overflow-hidden rounded-[2px] hover:opacity-80 transition-opacity relative bg-[#B22234]"
+            className="w-[19px] h-[13px] border border-white/20 overflow-hidden relative bg-[#B22234] hover:opacity-85 transition-opacity"
           >
-            <div className="absolute top-0 left-0 w-2.5 h-2 bg-[#3C3B6E] flex items-center justify-center">
-              <span className="text-[6px] text-white leading-none">&#9733;</span>
+            <div className="absolute top-0 left-0 w-[9px] h-[7px] bg-[#3C3B6E] flex items-center justify-center">
+              <span className="text-[5px] text-white leading-none">&#9733;</span>
             </div>
-            <div className="h-[2px] bg-white mt-[3px]"></div>
-            <div className="h-[2px] bg-white mt-[2px]"></div>
-            <div className="h-[2px] bg-white mt-[2px]"></div>
+            <div className="h-[2px] bg-white mt-[2.5px]"></div>
+            <div className="h-[2px] bg-white mt-[1.5px]"></div>
+            <div className="h-[2px] bg-white mt-[1.5px]"></div>
           </button>
         </div>
       </div>
 
-      {/* 2. Main Header / Navigation */}
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="#beranda" className="flex items-center gap-2 group">
-          {/* Exact Logo Shape recreation: stylized curved wave icon in cyan */}
-          <div className="w-10 h-10 flex items-center justify-center">
-            <svg viewBox="0 0 100 80" className="w-10 h-8">
-              <path
-                d="M15,40 C15,20 35,10 65,10 C85,10 90,25 75,32 C60,39 30,35 25,48 C20,61 40,70 70,70 C90,70 95,55 95,55"
-                fill="none"
-                stroke="#0099d8"
-                strokeWidth="11"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M30,22 C40,16 65,16 75,25"
-                fill="none"
-                stroke="#19375e"
-                strokeWidth="7"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-          <div className="flex items-baseline gap-1.5">
-            <span className="text-xl sm:text-2xl font-black tracking-tight text-[#19375e] uppercase">
-              NUSANTARA<span className="font-extrabold text-[#0099d8]">SATU</span>
-            </span>
-            <span className="text-[9px] font-bold text-[#19375e] tracking-wider uppercase opacity-90 hidden sm:inline">
-              PROPERTI TBK
-            </span>
-          </div>
+      {/* 2. Main Navbar with exact proportions and concise logo */}
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 h-[68px] sm:h-[74px] flex items-center justify-between">
+        {/* Brand Logo: Clean SVG Image matching kotasatu dimensions */}
+        <Link href="#beranda" className="flex items-center">
+          <img
+            src="/images/nusasatu-logo.svg"
+            alt="Nusasatu Properti Tbk"
+            className="h-[36px] sm:h-[42px] w-auto object-contain"
+          />
         </Link>
 
-        {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-bold tracking-wider text-[#19375e] uppercase">
+        {/* Desktop Menu - Exact font size, spacing, and underline */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[12.5px] font-bold tracking-[0.04em] text-[#19375e] uppercase">
+          {/* BERANDA */}
           <Link
             href="#beranda"
             onClick={() => setActiveMenu('beranda')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'beranda' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            Beranda
+            <span>BERANDA</span>
+            {activeMenu === 'beranda' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
 
+          {/* PROFIL PERUSAHAAN */}
           <Link
             href="#profil-perusahaan"
             onClick={() => setActiveMenu('profil-perusahaan')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'profil-perusahaan' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            Profil Perusahaan
+            <span>PROFIL PERUSAHAAN</span>
+            {activeMenu === 'profil-perusahaan' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
 
-          {/* Dropdown Unit Bisnis */}
+          {/* UNIT BISNIS ˅ */}
           <div 
             className="relative"
             onMouseEnter={() => setUnitBisnisDropdown(true)}
@@ -124,18 +105,19 @@ export default function Navbar() {
                 const el = document.getElementById('unit-bisnis');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className={`py-2 inline-flex items-center gap-1 transition-colors hover:text-[#0099d8] ${
-                activeMenu === 'unit-bisnis' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-              }`}
+              className="relative py-1.5 inline-flex items-center gap-1.5 transition-colors hover:text-[#0099d8]"
             >
-              <span>Unit Bisnis</span>
-              <svg className="w-3 h-3 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>UNIT BISNIS</span>
+              <svg className="w-3 h-3 text-[#19375e] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
               </svg>
+              {activeMenu === 'unit-bisnis' && (
+                <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+              )}
             </button>
 
             {unitBisnisDropdown && (
-              <div className="absolute top-full left-0 w-44 bg-white border border-slate-100 shadow-xl rounded-b-md py-2 z-50 animate-fadeIn">
+              <div className="absolute top-full left-0 w-48 bg-white border border-slate-100 shadow-xl rounded-b-md py-2 z-50">
                 <Link
                   href="#unit-bisnis"
                   onClick={() => setUnitBisnisDropdown(false)}
@@ -148,64 +130,74 @@ export default function Navbar() {
                   onClick={() => setUnitBisnisDropdown(false)}
                   className="block px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:text-[#0099d8] transition-colors"
                 >
-                  Properti (The Amaya)
+                  Properti (Amaya)
                 </Link>
               </div>
             )}
           </div>
 
+          {/* INFORMASI INVESTOR */}
           <Link
             href="#informasi-investor"
             onClick={() => setActiveMenu('informasi-investor')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'informasi-investor' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            Informasi Investor
+            <span>INFORMASI INVESTOR</span>
+            {activeMenu === 'informasi-investor' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
 
+          {/* TATA KELOLA */}
           <Link
             href="#tata-kelola"
             onClick={() => setActiveMenu('tata-kelola')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'tata-kelola' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            Tata Kelola
+            <span>TATA KELOLA</span>
+            {activeMenu === 'tata-kelola' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
 
+          {/* BERITA */}
           <Link
             href="#berita"
             onClick={() => setActiveMenu('berita')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'berita' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            Berita
+            <span>BERITA</span>
+            {activeMenu === 'berita' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
 
+          {/* CSR */}
           <Link
             href="#csr"
             onClick={() => setActiveMenu('csr')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'csr' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            CSR
+            <span>CSR</span>
+            {activeMenu === 'csr' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
 
+          {/* KARIR */}
           <Link
             href="#karir"
             onClick={() => setActiveMenu('karir')}
-            className={`py-2 transition-colors relative hover:text-[#0099d8] ${
-              activeMenu === 'karir' ? 'text-[#19375e] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2.5px] after:bg-[#19375e]' : ''
-            }`}
+            className="relative py-1.5 transition-colors hover:text-[#0099d8]"
           >
-            Karir
+            <span>KARIR</span>
+            {activeMenu === 'karir' && (
+              <span className="absolute -bottom-2 left-0 w-full h-[2.5px] bg-[#19375e]"></span>
+            )}
           </Link>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Burger Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden p-2 text-[#19375e] hover:text-[#0099d8] focus:outline-none"
@@ -225,63 +217,15 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-sm text-[#19375e] uppercase shadow-lg">
-          <Link
-            href="#beranda"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Beranda
-          </Link>
-          <Link
-            href="#profil-perusahaan"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Profil Perusahaan
-          </Link>
-          <Link
-            href="#unit-bisnis"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Unit Bisnis (Amaya &amp; Allstay)
-          </Link>
-          <Link
-            href="#informasi-investor"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Informasi Investor
-          </Link>
-          <Link
-            href="#tata-kelola"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Tata Kelola
-          </Link>
-          <Link
-            href="#berita"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Berita
-          </Link>
-          <Link
-            href="#csr"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            CSR
-          </Link>
-          <Link
-            href="#karir"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-[#0099d8]"
-          >
-            Karir
-          </Link>
+        <div className="lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-xs text-[#19375e] uppercase shadow-lg">
+          <Link href="#beranda" onClick={() => setMobileMenuOpen(false)} className="block py-1">Beranda</Link>
+          <Link href="#profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">Profil Perusahaan</Link>
+          <Link href="#unit-bisnis" onClick={() => setMobileMenuOpen(false)} className="block py-1">Unit Bisnis</Link>
+          <Link href="#informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
+          <Link href="#tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
+          <Link href="#berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
+          <Link href="#csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>
+          <Link href="#karir" onClick={() => setMobileMenuOpen(false)} className="block py-1">Karir</Link>
         </div>
       )}
     </header>

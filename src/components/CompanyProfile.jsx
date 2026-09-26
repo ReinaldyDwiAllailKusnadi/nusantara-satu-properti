@@ -28,11 +28,11 @@ export default function CompanyProfile() {
             <div className="w-16 h-1 bg-[#19375e] mb-4"></div>
 
             <h2 className="text-2xl sm:text-3xl font-black text-[#19375e] tracking-tight uppercase mb-4">
-              PT Nusantara Satu Properti Tbk
+              PT Nusasatu Properti Tbk
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
-              PT Nusantara Satu Properti Tbk (“Perseroan”), berkedudukan di Kabupaten Semarang, dengan akta pendiriannya sebagaimana dimuat dalam Akta Pendirian Perseroan Terbatas No. 6 tanggal 3 Oktober 2012, dibuat di hadapan Maria Yosefa Deni, S.H., Notaris di Kota Semarang. Akta Pendirian Perseroan telah memperoleh pengesahan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia sebagaimana ternyata dari Surat Keputusannya No. AHU-58590.AH.01.01.Tahun 2012 tanggal 19 November 2012.
+              PT Nusasatu Properti Tbk (“Perseroan”), berkedudukan di Kabupaten Semarang, dengan akta pendiriannya sebagaimana dimuat dalam Akta Pendirian Perseroan Terbatas No. 6 tanggal 3 Oktober 2012, dibuat di hadapan Maria Yosefa Deni, S.H., Notaris di Kota Semarang. Akta Pendirian Perseroan telah memperoleh pengesahan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia sebagaimana ternyata dari Surat Keputusannya No. AHU-58590.AH.01.01.Tahun 2012 tanggal 19 November 2012.
             </p>
 
             <button
