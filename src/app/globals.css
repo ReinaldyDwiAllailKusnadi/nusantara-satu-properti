@@ -148,10 +148,10 @@ html {
 .nav-link-item {
   font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: #2A2A2A;
+  color: #1c1c1c;
   padding: 18px 15px;
   position: relative;
   display: inline-flex;
@@ -172,6 +172,6 @@ html {
   left: 15px;
   right: 15px;
   height: 2px;
-  background-color: #2A2A2A;
+  background-color: #1c1c1c;
 }
 
