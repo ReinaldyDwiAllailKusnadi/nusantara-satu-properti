@@ -12,6 +12,7 @@ export default function Navbar() {
   const getActiveMenu = (path) => {
     if (path === '/profil-perusahaan') return 'profil-perusahaan';
     if (path === '/perhotelan-allstay' || path === '/properti-amaya') return 'unit-bisnis';
+    if (path === '/informasi-investor') return 'informasi-investor';
     if (path === '/tata-kelola') return 'tata-kelola';
     if (path === '/berita') return 'berita';
     if (path === '/csr') return 'csr';
@@ -23,7 +24,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    if (['/profil-perusahaan', '/perhotelan-allstay', '/properti-amaya', '/tata-kelola', '/berita', '/csr', '/career', '/karir'].includes(pathname)) {
+    if (['/profil-perusahaan', '/perhotelan-allstay', '/properti-amaya', '/informasi-investor', '/tata-kelola', '/berita', '/csr', '/career', '/karir'].includes(pathname)) {
       setActiveMenu(getActiveMenu(pathname));
       return;
     }
@@ -189,7 +190,7 @@ export default function Navbar() {
 
             {/* INFORMASI INVESTOR */}
             <Link
-              href="/#informasi-investor"
+              href="/informasi-investor"
               onClick={() => setActiveMenu('informasi-investor')}
               className={`nav-link-item ${activeMenu === 'informasi-investor' ? 'active' : ''}`}
             >
@@ -294,7 +295,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/#informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
+          <Link href="/informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
           <Link href="/tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
           <Link href="/berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
           <Link href="/csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>

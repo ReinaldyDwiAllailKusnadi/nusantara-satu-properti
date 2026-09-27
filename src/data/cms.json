@@ -242,5 +242,925 @@
         }
       ]
     }
+  ],
+  "investor": [
+    {
+      "id": "inv-1",
+      "category": "Prospektus",
+      "title": "Prospektus Penawaran",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Buku_Prospektus_-_Kota_Satu_Properti_-_Okt18.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-2",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/05/SATU-Annual-Report-Sustainability-ESG-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/05/Annual-Report-Sustainability-ESG-2025.webp",
+      "date": "2026"
+    },
+    {
+      "id": "inv-3",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/05/SATU-Laporan-Tahunan-dan-Keberlanjutan-2024.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2025/05/SATU-ANNUAL-AND-SUSTAINABILITY-REPORT-2023-pdf-724x1024-1.webp",
+      "date": "2026"
+    },
+    {
+      "id": "inv-4",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/05/SATU-Annual-and-Sustainability-Report-2023.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2024/05/SATU-ANNUAL-AND-SUSTAINABILITY-REPORT-2023-pdf-724x1024-1.jpg",
+      "date": "2026"
+    },
+    {
+      "id": "inv-5",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/05/SATU-Annual-and-Sustainability-Report-2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2023/05/Capture123123.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-6",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/06/SATU-Annual-and-Sustainability-Report-2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2022/06/Capture.jpg",
+      "date": "2026"
+    },
+    {
+      "id": "inv-7",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/06/Kota_Satu_Properti_-_Annual_Report_2020_02.06.2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2021/06/New-Project.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-8",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/KOTASATU_ANNUAL_REPORT_2019.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2021/04/annual-report-2019.jpg",
+      "date": "2026"
+    },
+    {
+      "id": "inv-9",
+      "category": "Laporan Tahunan",
+      "title": "Laporan Tahunan 2018",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/KOTASATU_ANNUAL_REPORT_2019.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2021/04/annual-report-thumbnail.jpg",
+      "date": "2026"
+    },
+    {
+      "id": "inv-10",
+      "category": "Informasi Keuangan",
+      "title": "LKTT SATU 2026",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/07/SATU-Laporan-Keuangan-Tengah-Tahunan-2026-PT-Kota-Satu-Properti-Tbk.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-11",
+      "category": "Informasi Keuangan",
+      "title": "SATU LK Q1 2026",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/04/69f2cd014bf15_SATU-Final-Financial-Report-Q1-2026.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-12",
+      "category": "Informasi Keuangan",
+      "title": "SATU Laporan Keuangan Q1 Tahun 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/04/6811d4b6f2647_LK-INTERIM-Q1-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-13",
+      "category": "Informasi Keuangan",
+      "title": "SATU Laporan Keuangan Q2 Tahun 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/07/SATU-Laporan-Keuangan-Q2-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-14",
+      "category": "Informasi Keuangan",
+      "title": "SATU Laporan Keuangan Q3 Tahun 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/10/6902dccccb323_SATU-Laporan-Keuangan-Q3-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-15",
+      "category": "Informasi Keuangan",
+      "title": "SATU LKT 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/04/SATU-LKT-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-16",
+      "category": "Informasi Keuangan",
+      "title": "SATU Laporan Keuangan Q1 Tahun 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/05/Laporan-keuangan-Triwulan-1-2024.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-17",
+      "category": "Informasi Keuangan",
+      "title": "SATU Laporan Keuangan Q2 Tahun 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/08/LK-INTERM-Q2-2024-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-18",
+      "category": "Informasi Keuangan",
+      "title": "SATU Laporan Keuangan Q3 Tahun 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/11/LK-Interim-Q3-Tahun-2024-FINAL.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-19",
+      "category": "Informasi Keuangan",
+      "title": "SATU LKT 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/04/FINAL-KS-PROPERTI-KONSOL-2024-appendix-dan-opini.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-20",
+      "category": "Informasi Keuangan",
+      "title": "SATU LKT 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/04/LKT_2023_-_KS_Properti_Tbk_final.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-21",
+      "category": "Informasi Keuangan",
+      "title": "SATU LK Q3 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/10/LK_Interim_Q3_Tahun_2023.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-22",
+      "category": "Informasi Keuangan",
+      "title": "LKTT SATU 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/08/LKTT_SATU_2023_-_Laporan_Keuangan.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-23",
+      "category": "Informasi Keuangan",
+      "title": "LK Interm Q1 Thaun 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/06/LK-Interm-Q1-tahun-2023-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-24",
+      "category": "Informasi Keuangan",
+      "title": "LKT SATU 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/04/SATU-LKT-2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-25",
+      "category": "Informasi Keuangan",
+      "title": "LKTT SATU 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/08/LKTT_SATU_2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-26",
+      "category": "Informasi Keuangan",
+      "title": "LK Interm Q1 Tahun 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/10/LK-Interm-Q1-Tahun-2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-27",
+      "category": "Informasi Keuangan",
+      "title": "LK Interm Q3 Tahun 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/10/LK-Interm-Q3-Tahun-2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-28",
+      "category": "Informasi Keuangan",
+      "title": "LKTT SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/08/4._Lap._Keuangan_SATU_Q2_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-29",
+      "category": "Informasi Keuangan",
+      "title": "LKT SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/05/LKT_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-30",
+      "category": "Informasi Keuangan",
+      "title": "LKTT SATU 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/LKTT-SATU-2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-31",
+      "category": "Informasi Keuangan",
+      "title": "LKT SATU 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/LKT-SATU-2020-Audited.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-32",
+      "category": "Informasi Keuangan",
+      "title": "LKTT SATU 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/LKTT-SATU-2019.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-33",
+      "category": "Informasi Keuangan",
+      "title": "LKT SATU 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/LKT-SATU-2019-Audited-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-34",
+      "category": "Informasi Keuangan",
+      "title": "Laporan Keuangan Teraudit 2018",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Laporan_Keuangan_Audited_PT_Kota_Satu_Properti_Tbk_2018.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-35",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata tertib SATU RUPST 2026",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/06/Ringkasan-Risalah-RUPST-2026.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-36",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pemanggilan SATU RUPST 2026",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/06/SATU-Panggilan-Convocation-RUPST-2026.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-37",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPST 2026",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/05/6a0c21de9dea1_SATU-ANNOUNCEMENT-AGMS-2026.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-38",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPST 2026",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2026/06/Ringkasan-Risalah-RUPST-2026.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-39",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata tertib SATU RUPST 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/05/TATA-TERTIB-RUPST-SATU-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-40",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan SATU RUPST 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/05/6835409a1760f_SATU-Panggilan-Convocation-RUPST-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-41",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPST 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/05/SATU-Announcement-AGMS-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-42",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPST 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/06/SATU-RINGKASAN-RISALAH-RUPST-2025.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-43",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata tertib SATU RUPST 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/06/TATA-TERTIB-RUPST-SATU-2024-.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-44",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan SATU RUPST 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/05/SATU-Panggilan-Convocation-RUPST-2024.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-45",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPST 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/05/SATU-RUPST-2024_Pengumuman-Announcement.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-46",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPST 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/06/SATU-Resume-Risalah-RUPST-2024.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-47",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata Tertib RUPST 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/05/Tata_Tertib_RUPST_SATU_2023.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-48",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan SATU RUPST 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/05/Panggilan_RUPST_SATU_2023.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-49",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPST 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/05/SATU_RUPST_2023_Pengumuman.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-50",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPST 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/06/RESUME-RISALAH-RAPAT-PT.-KOTA-SATU-PROPERTI-Tbk-21-JUNI-2023.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-51",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata Tertib RUPST SATU 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/07/Tata_Tertib_RUPST_SATU_2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-52",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPST SATU 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/07/Panggilan_RUPST_SATU_2022.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-53",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPST 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/06/Pengumuman-SATU-RUPST-2022-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-54",
+      "category": "Rapat Pemegang Saham",
+      "title": "Risalah RUPST 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/09/BERITA-ACARA-RUPS-PT-KOTA-SATU-PROPERTI-TBK-NO-2_compressed-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-55",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPST 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/08/RM-RESUME_RISALAH_RAPAT_SATU.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-56",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata Tertib RUPST SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/06/Tata_Tertib_RUPST_SATU_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-57",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPST SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/06/Panggilan_RUPST_SATU_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-58",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman RUPST SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/SATU_Pengumuman_RUPST_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-59",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPST 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/06/RINGKASAN_RISALAH_RUPST_SATU_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-60",
+      "category": "Rapat Pemegang Saham",
+      "title": "Berita Acara RUPST 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/07/SATU_Berita_Acara_RUPST_2021-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-61",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pemberitahuan RUPS SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/Pemberitahuan_RUPST_SATU_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-62",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPSLB SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/06/Panggilan_RUPSLB_SATU_2021-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-63",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman RUPSLB SATU 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/SATU_Pengumuman_RUPSLB_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-64",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pemberitahuan RUPSLB 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/Pemberitahuan_RUPSLB_2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-65",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata Tertib RUPSLB KS Properti 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Tata_Tertib_RUPSLB_KS_Properti_2020-1.docx",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-66",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPSLB SATU 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/FORM_PERNYATAAN_PEMEGANG_SAHAM_INDEPENDEN-1.docx",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-67",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPSLB 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengumuman_SATU_RUPSLB_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-68",
+      "category": "Rapat Pemegang Saham",
+      "title": "RISALAH RAPAT RUPSLB SATU",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/RISALAH_RAPAT_RUPSLB_SATU_.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-69",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPSLB SATU 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Panggilan_RUPSLB_SATU_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-70",
+      "category": "Rapat Pemegang Saham",
+      "title": "Akta Berita Acara RUPSLB",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Akta_Berita_Acara_RUPSLB_SATU_141220.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-71",
+      "category": "Rapat Pemegang Saham",
+      "title": "Tata Tertib RUPST PT Kota Satu Properti Tbk 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Tata_Tertib_RUPST_KS_Properti_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-72",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPST PT Kota Satu Properti Tbk 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Panggilan_RUPST_PT_Kota_Satu_Properti_Tbk_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-73",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman SATU RUPS 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengumuman_SATU_RUPS2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-74",
+      "category": "Rapat Pemegang Saham",
+      "title": "Berita Acara RUPS 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Share_BA_RUPS_NOTARIS_RETNO_H_0001-min.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-75",
+      "category": "Rapat Pemegang Saham",
+      "title": "Covernote RUPST PT Kota Satu Properti Tbk 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Ringkasan_Risalah_SATU_RUPST_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-76",
+      "category": "Rapat Pemegang Saham",
+      "title": "Covernote RUPSLB 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/RISALAH_RAPAT_COVERNOTE_AKTA_BAR.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-77",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPSLB PT Kota Satu Properti Tbk 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Panggilan_RUPSLB_PT_Kota_Satu_Properti_Tbk_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-78",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman RUPSLB PT Kota Satu Properti 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengumuman_RUPSLB_PT_Kota_Satu_Properti_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-79",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPSLB 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/SATU_Ringkasan_Risalah_RUPSLB_21022020_PT_KSP.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-80",
+      "category": "Rapat Pemegang Saham",
+      "title": "Pengumuman RUPS 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengumuman_RUPS_PT_Kota_Satu_Properti_Tbk_2019.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-81",
+      "category": "Rapat Pemegang Saham",
+      "title": "Panggilan RUPS 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Panggilan_RUPS_PT_Kota_Satu_Properti_Tbk_2019.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-82",
+      "category": "Rapat Pemegang Saham",
+      "title": "Ringkasan Risalah RUPS 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/FINAL_Ringkasan_Risalah_RUPS_-_KS_Properti_2019_-_rev3_06052019.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-83",
+      "category": "Rapat Pemegang Saham",
+      "title": "Covernote 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/FINAL_COVERNOTE_03052019_PT._Kota_Satu_Properti_Tbk.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-84",
+      "category": "Rapat Pemegang Saham",
+      "title": "Berita Acara RUPS 2019",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/BA_RUPST_2019_SATU.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-85",
+      "category": "Public Expose",
+      "title": "SATU Paparan Publik 2026",
+      "downloadUrl": "/wp-content/uploads/2026/04/SATU-PUBLIC-EXPOSE-2026.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-86",
+      "category": "Public Expose",
+      "title": "SATU Paparan Publik 2025",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2025/04/Public-Expose-2025-Update_FIX.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-87",
+      "category": "Public Expose",
+      "title": "SATU Paparan Publik 2024",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2024/05/SATU-MATERI-PUBEX-2024.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-88",
+      "category": "Public Expose",
+      "title": "SATU Paparan Publik Tahunan 2023",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2023/06/MATERI-PUBEX-2023-SATU-1.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-89",
+      "category": "Public Expose",
+      "title": "Annual Public Expose 2022",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/12/MATERI-PUBEX-2022.pptx.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-90",
+      "category": "Public Expose",
+      "title": "Resume Bp. Ibnu Dody P",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/07/Resume_Bp_Ibnu_Dody_P.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-91",
+      "category": "Public Expose",
+      "title": "Resume Bp. Momog Irnawan",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/07/RESUME_BP._MOMOG__IRNAWAN.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-92",
+      "category": "Public Expose",
+      "title": "Resume Bp. Leo Agung Vito",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2022/07/Resume_Bp_Leo_Agung_Vito.jpeg",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-93",
+      "category": "Public Expose",
+      "title": "Annual Public Expose 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/12/SATU-MATERI-PUBEX-2021.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-94",
+      "category": "Public Expose",
+      "title": "SATU KI PMTHMETD 2021",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/05/SATU_KI_PMTHMETD_2021-2.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-95",
+      "category": "Public Expose",
+      "title": "Pengumuman Hasil Pelaksanaan PMTHMETD",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengumuman_Hasil_Pelaksanaan_PMTHMETD.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-96",
+      "category": "Public Expose",
+      "title": "Pengumuman Rencana Pelaksanaan PMTHMETD",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengumuman_Rencana_PMTHMETD.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-97",
+      "category": "Public Expose",
+      "title": "Perubahan/Tambahan Informasi atas Keterbukaan Informasi PMTHMETD 10 Desember 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/SATU_Perubahan_KI_PMTHMETD_101220.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-98",
+      "category": "Public Expose",
+      "title": "Perubahan dan/atau Tambahan Informasi Atas Keterbukaan Informasi PMTHMETD 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Perubahan_Tambahan_KI_PMTHMETD_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-99",
+      "category": "Public Expose",
+      "title": "KI PT Kota Satu Properti Tbk - Private Placement 2020",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/KI_PT_Kota_Satu_Properti_Tbk_PMTHMETD_5_Nov_2020.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-100",
+      "category": "Public Expose",
+      "title": "KI Perubahan Corsec Kota Satu",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/KI_Perubahan_Corsec_Kota_Satu.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-101",
+      "category": "Public Expose",
+      "title": "Pengunduran Diri Komisaris",
+      "downloadUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pengunduran_Diri_Komisaris.pdf",
+      "buttonText": "Download &gt;",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    },
+    {
+      "id": "inv-102",
+      "category": "Keterbukaan Informasi Lainnya",
+      "title": "INFORMASI SAHAM (IDX: SATU)",
+      "downloadUrl": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/SATU",
+      "buttonText": "Lihat Informasi Saham >",
+      "image": "https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png",
+      "date": "2026"
+    }
   ]
 }

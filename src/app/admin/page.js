@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function AdminDashboardPage() {
-  const [activeTab, setActiveTab] = useState('berita'); // 'berita' | 'csr' | 'karir' | 'tataKelola'
-  const [data, setData] = useState({ berita: [], csr: [], karir: [], tataKelola: [] });
+  const [activeTab, setActiveTab] = useState('berita'); // 'berita' | 'csr' | 'karir' | 'tataKelola' | 'investor'
+  const [data, setData] = useState({ berita: [], csr: [], karir: [], tataKelola: [], investor: [] });
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   
@@ -81,6 +81,15 @@ export default function AdminDashboardPage() {
         pdfUrl: 'https://kotasatuproperti.com/wp-content/uploads/2021/04/Pedoman_Direksi_dan_Komisaris_Perseroan.pdf',
         sectionHeading: '',
         sectionContent: '',
+      });
+    } else if (activeTab === 'investor') {
+      setFormData({
+        title: '',
+        category: 'Laporan Tahunan',
+        downloadUrl: 'https://kotasatuproperti.com/wp-content/uploads/2026/05/SATU-Annual-Report-Sustainability-ESG-2025.pdf',
+        buttonText: 'Download >',
+        image: 'https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png',
+        date: '2026',
       });
     }
     setIsModalOpen(true);
@@ -244,7 +253,7 @@ export default function AdminDashboardPage() {
       {/* Main Admin Content */}
       <main className="max-w-[1400px] mx-auto px-6 py-8 flex-1 w-full space-y-8">
         {/* Statistics Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#22406F] flex items-center justify-center text-2xl font-bold">
               📰
@@ -282,6 +291,16 @@ export default function AdminDashboardPage() {
             <div>
               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tata Kelola</p>
               <h3 className="text-2xl font-extrabold text-[#22406F]">{data.tataKelola?.length || 0}</h3>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-2xl font-bold">
+              📈
+            </div>
+            <div>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Info Investor</p>
+              <h3 className="text-2xl font-extrabold text-[#22406F]">{data.investor?.length || 0}</h3>
             </div>
           </div>
         </div>
@@ -334,6 +353,17 @@ export default function AdminDashboardPage() {
               >
                 🏛️ Tata Kelola ({data.tataKelola?.length || 0})
               </button>
+
+              <button
+                onClick={() => { setActiveTab('investor'); setSearchTerm(''); }}
+                className={`px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                  activeTab === 'investor'
+                    ? 'bg-[#22406F] text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                📈 Investor ({data.investor?.length || 0})
+              </button>
             </div>
 
             {/* Actions: Search & Add Button */}
@@ -363,6 +393,8 @@ export default function AdminDashboardPage() {
                     ? '/csr'
                     : activeTab === 'karir'
                     ? '/career'
+                    : activeTab === 'investor'
+                    ? '/informasi-investor'
                     : '/tata-kelola'
                 }
                 target="_blank"
@@ -424,6 +456,7 @@ export default function AdminDashboardPage() {
                         {item.location && <div>📍 {item.location}</div>}
                         {item.postedDate && <div>📅 {item.postedDate}</div>}
                         {item.documentTitle && <div>📄 {item.documentTitle}</div>}
+                        {item.category && <div className="font-semibold text-slate-700">📁 {item.category}</div>}
                       </td>
 
                       {/* Status / Tag */}
@@ -447,6 +480,11 @@ export default function AdminDashboardPage() {
                         {activeTab === 'tataKelola' && (
                           <span className="px-2.5 py-1 bg-purple-50 text-purple-700 font-bold text-xs rounded-full">
                             Charter
+                          </span>
+                        )}
+                        {activeTab === 'investor' && (
+                          <span className="px-2.5 py-1 bg-cyan-50 text-cyan-800 font-bold text-xs rounded-full">
+                            {item.category || 'Dokumen'}
                           </span>
                         )}
                       </td>
@@ -761,6 +799,86 @@ export default function AdminDashboardPage() {
                       onChange={(e) => setFormData({ ...formData, sectionContent: e.target.value })}
                       className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20 leading-relaxed"
                     ></textarea>
+                  </div>
+                </>
+              )}
+
+              {/* Form Fields: Investor */}
+              {activeTab === 'investor' && (
+                <>
+                  <div>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Judul Dokumen</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.title || ''}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      placeholder="e.g. Laporan Tahunan 2026"
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Kategori Dokumen</label>
+                      <select
+                        value={formData.category || 'Laporan Tahunan'}
+                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20 bg-white"
+                      >
+                        <option value="Prospektus">Prospektus</option>
+                        <option value="Laporan Tahunan">Laporan Tahunan</option>
+                        <option value="Informasi Keuangan">Informasi Keuangan</option>
+                        <option value="Rapat Pemegang Saham">Rapat Pemegang Saham</option>
+                        <option value="Public Expose">Public Expose</option>
+                        <option value="Keterbukaan Informasi Lainnya">Keterbukaan Informasi Lainnya</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Tahun / Periode</label>
+                      <input
+                        type="text"
+                        value={formData.date || '2026'}
+                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                        placeholder="2026"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Link File / URL PDF</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.downloadUrl || ''}
+                      onChange={(e) => setFormData({ ...formData, downloadUrl: e.target.value })}
+                      placeholder="https://kotasatuproperti.com/.../document.pdf"
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Teks Tombol</label>
+                      <input
+                        type="text"
+                        value={formData.buttonText || 'Download >'}
+                        onChange={(e) => setFormData({ ...formData, buttonText: e.target.value })}
+                        placeholder="Download >"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">URL Gambar Cover</label>
+                      <input
+                        type="text"
+                        value={formData.image || ''}
+                        onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                        placeholder="https://.../cover.png"
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
+                      />
+                    </div>
                   </div>
                 </>
               )}
