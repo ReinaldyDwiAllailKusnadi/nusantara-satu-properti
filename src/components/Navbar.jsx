@@ -9,20 +9,22 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileUnitBisnisOpen, setMobileUnitBisnisOpen] = useState(false);
   const [unitBisnisDropdown, setUnitBisnisDropdown] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(
-    pathname === '/profil-perusahaan' 
-      ? 'profil-perusahaan' 
-      : (pathname === '/perhotelan-allstay' || pathname === '/properti-amaya' ? 'unit-bisnis' : 'beranda')
-  );
+  const getActiveMenu = (path) => {
+    if (path === '/profil-perusahaan') return 'profil-perusahaan';
+    if (path === '/perhotelan-allstay' || path === '/properti-amaya') return 'unit-bisnis';
+    if (path === '/tata-kelola') return 'tata-kelola';
+    if (path === '/berita') return 'berita';
+    if (path === '/csr') return 'csr';
+    if (path === '/career' || path === '/karir') return 'karir';
+    return 'beranda';
+  };
+
+  const [activeMenu, setActiveMenu] = useState(getActiveMenu(pathname));
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    if (pathname === '/profil-perusahaan') {
-      setActiveMenu('profil-perusahaan');
-      return;
-    }
-    if (pathname === '/perhotelan-allstay' || pathname === '/properti-amaya') {
-      setActiveMenu('unit-bisnis');
+    if (['/profil-perusahaan', '/perhotelan-allstay', '/properti-amaya', '/tata-kelola', '/berita', '/csr', '/career', '/karir'].includes(pathname)) {
+      setActiveMenu(getActiveMenu(pathname));
       return;
     }
 
@@ -196,7 +198,7 @@ export default function Navbar() {
 
             {/* TATA KELOLA */}
             <Link
-              href="/#tata-kelola"
+              href="/tata-kelola"
               onClick={() => setActiveMenu('tata-kelola')}
               className={`nav-link-item ${activeMenu === 'tata-kelola' ? 'active' : ''}`}
             >
@@ -205,7 +207,7 @@ export default function Navbar() {
 
             {/* BERITA */}
             <Link
-              href="/#berita"
+              href="/berita"
               onClick={() => setActiveMenu('berita')}
               className={`nav-link-item ${activeMenu === 'berita' ? 'active' : ''}`}
             >
@@ -214,7 +216,7 @@ export default function Navbar() {
 
             {/* CSR */}
             <Link
-              href="/#csr"
+              href="/csr"
               onClick={() => setActiveMenu('csr')}
               className={`nav-link-item ${activeMenu === 'csr' ? 'active' : ''}`}
             >
@@ -223,7 +225,7 @@ export default function Navbar() {
 
             {/* KARIR */}
             <Link
-              href="/#karir"
+              href="/career"
               onClick={() => setActiveMenu('karir')}
               className={`nav-link-item ${activeMenu === 'karir' ? 'active' : ''}`}
             >
@@ -293,10 +295,10 @@ export default function Navbar() {
           </div>
 
           <Link href="/#informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
-          <Link href="/#tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
-          <Link href="/#berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
-          <Link href="/#csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>
-          <Link href="/#karir" onClick={() => setMobileMenuOpen(false)} className="block py-1">Karir</Link>
+          <Link href="/tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
+          <Link href="/berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
+          <Link href="/csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>
+          <Link href="/career" onClick={() => setMobileMenuOpen(false)} className="block py-1">Karir</Link>
         </div>
       )}
     </header>

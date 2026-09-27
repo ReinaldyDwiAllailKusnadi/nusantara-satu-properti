@@ -1,0 +1,246 @@
+{
+  "berita": [
+    {
+      "id": "berita-1",
+      "tag": "NEWS",
+      "date": "2026-05-08",
+      "title": "Tingkatkan Kesiapsiagaan Darurat, PT Kota Satu Properti Tbk Bersama RS Hermina dan Aparat Setempat Gelar Pelatihan Serentak di Unit Hotel",
+      "excerpt": "Dalam rangka meningkatkan standar keselamatan dan kesiapsiagaan menghadapi kondisi darurat, PT Kota Satu Properti Tbk menyelenggarakan pelatihan keselamatan terpadu bersama RS Hermina...",
+      "image": "/images/ahs-thumb.jpg",
+      "author": "Admin",
+      "featured": true
+    },
+    {
+      "id": "berita-2",
+      "tag": "NEWS",
+      "date": "2026-04-29",
+      "title": "Menghidupkan Nilai dan Menguatkan Kinerja di PT Kota Satu Properti Tbk melalui Etos Kerja Revolution Batch 2",
+      "excerpt": "Sebagai wujud komitmen manajemen dalam membentuk budaya kerja profesional berlandaskan filosofi SATU, diselenggarakan pelatihan Etos Kerja Revolution Batch 2 bagi seluruh jajaran karyawan...",
+      "image": "/images/Web_Award-copy_KSP.jpg",
+      "author": "Admin",
+      "featured": true
+    },
+    {
+      "id": "berita-3",
+      "tag": "NEWS",
+      "date": "2026-04-08",
+      "title": "Menilik Ambisi Besar di Balik Logo Baru PT Kota Satu Properti Tbk",
+      "excerpt": "Perubahan identitas visual dan peluncuran logo baru PT Kota Satu Properti Tbk menandai babak baru dalam ekspansi bisnis properti dan perhotelan berkelanjutan di Indonesia...",
+      "image": "/images/orig-logo.png",
+      "author": "Admin",
+      "featured": false
+    },
+    {
+      "id": "berita-4",
+      "tag": "NEWS",
+      "date": "2026-04-08",
+      "title": "PT Kota Satu Properti Tbk Soroti Tren Properti 2026 di Tengah Ketidakpastian Ekonomi Global",
+      "excerpt": "Manajemen PT Kota Satu Properti Tbk memaparkan peluang dan tantangan industri real estate Indonesia serta strategi adaptif klaster hunian hijau Amaya Home Resort...",
+      "image": "/images/Web_Foresta_TheAmaya.png",
+      "author": "Admin",
+      "featured": false
+    },
+    {
+      "id": "berita-5",
+      "tag": "NEWS",
+      "date": "2026-04-08",
+      "title": "Di Tengah Kenaikan BBM, Allstay Hotel Semarang Hadir Menjawab Perubahan Tren Staycation",
+      "excerpt": "Allstay Hotel Semarang menawarkan paket menginap terjangkau dengan fasilitas lifestyle modern di pusat kota Semarang untuk mendukung pariwisata lokal...",
+      "image": "/images/7.png",
+      "author": "Admin",
+      "featured": false
+    },
+    {
+      "id": "berita-6",
+      "tag": "NEWS",
+      "date": "2024-01-24",
+      "title": "Refresh & Recharge Cara Membangun Kebersamaan Karyawan Kota Satu Properti Tbk",
+      "excerpt": "Kegiatan outbound dan gathering keluarga besar perseroan untuk merekatkan tali silaturahmi serta meningkatkan semangat kolaborasi antardivisi...",
+      "image": "/images/scott-graham-5fNmWej4tAA-unsplash-1-1-1024x683.jpg",
+      "author": "Admin",
+      "featured": false
+    }
+  ],
+  "csr": [
+    {
+      "id": "csr-1",
+      "title": "The Amaya Lakukan Silaturahmi Di Panti Asuhan Dan Berbagi Takjil",
+      "date": "2021-05-04",
+      "summary": "Sebagai wujud kepedulian sosial di bulan Ramadhan, tim Amaya Home Resort menggelar silaturahmi ke panti asuhan serta membagikan takjil gratis kepada masyarakat sekitar Ungaran.",
+      "image": "/images/Web_Award_1_KSP.jpg",
+      "location": "Ungaran, Kabupaten Semarang"
+    },
+    {
+      "id": "csr-2",
+      "title": "Allstay Hotel Semarang Berbagi Bersama Panti Asuhan Asbaabul Mukhtar",
+      "date": "2021-04-23",
+      "summary": "Manajemen dan staf Allstay Hotel Semarang menyerahkan santunan kebutuhan pokok dan donasi pendidikan bagi anak-anak panti asuhan Asbaabul Mukhtar.",
+      "image": "/images/Web_Award_2_KSP.jpg",
+      "location": "Semarang"
+    },
+    {
+      "id": "csr-3",
+      "title": "ALLSTAY HOTEL SEMARANG BERBAGI BERSAMA KORBAN BENCANA LONGSOR DI LEMPONGSARI SEMARANG",
+      "date": "2021-02-15",
+      "summary": "Tanggap bencana melalui penyaluran bantuan darurat logistik, selimut, dan makanan siap saji bagi warga terdampak longsor di Lempongsari Semarang.",
+      "image": "/images/Web_Award_3_KSP.jpg",
+      "location": "Lempongsari, Semarang"
+    },
+    {
+      "id": "csr-4",
+      "title": "ALLSTAY HOTEL SEMARANG LAKSANAKAN KEGIATAN CSR PENANAMAN BIBIT MANGROVE DI PANTAI TIRANG",
+      "date": "2020-11-29",
+      "summary": "Aksi peduli lingkungan pesisir berupa penanaman ratusan bibit mangrove di Pantai Tirang guna mencegah abrasi air laut dan melestarikan ekosistem pesisir.",
+      "image": "/images/Web_Award_KSP.jpg",
+      "location": "Pantai Tirang, Semarang"
+    },
+    {
+      "id": "csr-5",
+      "title": "ALLSTAY HOTEL SEMARANG MELAKUKAN KEGIATAN BUKA BERSAMA",
+      "date": "2019-05-30",
+      "summary": "Buka puasa bersama anak yatim piatu dan warga dhuafa sekitar hotel dengan nuansa kekeluargaan dan penyerahan bingkisan lebaran.",
+      "image": "/images/ahs-thumb.jpg",
+      "location": "Allstay Hotel Semarang"
+    },
+    {
+      "id": "csr-6",
+      "title": "THE AMAYA – GIVE HOPE 2018: SHARING TOGETHERNESS",
+      "date": "2018-12-19",
+      "summary": "Program tahunan Give Hope yang mempertemukan penghuni Amaya Home Resort dan masyarakat umum dalam rangkaian bakti sosial dan aksi donor darah.",
+      "image": "/images/Web_ClubHouse_TheAmaya.png",
+      "location": "Club House The Amaya"
+    }
+  ],
+  "karir": [
+    {
+      "id": "karir-1",
+      "title": "Project Architect & Urban Planner",
+      "division": "Property Development",
+      "location": "Ungaran, Semarang",
+      "type": "Full Time",
+      "status": "Closed",
+      "postedDate": "2026-03-01",
+      "description": "Bertanggung jawab atas perencanaan desain arsitektur klaster hunian dan pengawasan standar estetika The Amaya.",
+      "requirements": [
+        "Pendidikan S1 Arsitektur / Perencanaan Wilayah Kota",
+        "Pengalaman minimal 3 tahun di pengembang properti",
+        "Menguasai AutoCAD, SketchUp, Revit & 3D Rendering"
+      ]
+    },
+    {
+      "id": "karir-2",
+      "title": "Front Office Manager",
+      "division": "Hospitality (Allstay Hotel)",
+      "location": "Semarang / Yogyakarta",
+      "type": "Full Time",
+      "status": "Closed",
+      "postedDate": "2026-02-15",
+      "description": "Memimpin operasional Front Office dan memastikan kepuasan tamu hotel bintang 3 lifestyle modern.",
+      "requirements": [
+        "Pendidikan D3/S1 Perhotelan atau Pariwisata",
+        "Pengalaman minimal 2 tahun sebagai FOM di hotel bintang 3/4",
+        "Kemampuan komunikasi bahasa Inggris yang fasih"
+      ]
+    }
+  ],
+  "tataKelola": [
+    {
+      "id": "tab-1",
+      "tabKey": "pedoman-kerja",
+      "tabTitle": "Pedoman Kerja",
+      "documentTitle": "Pedoman Direksi dan Komisaris Perseroan",
+      "pdfUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Pedoman_Direksi_dan_Komisaris_Perseroan.pdf",
+      "sections": [
+        {
+          "heading": "Pedoman Kerja (Charter) Dewan Komisaris",
+          "content": "Dewan Komisaris merupakan organ Perseroan yang bertugas melakukan pengawasan secara umum dan/atau khusus sesuai dengan anggaran dasar serta memberi nasihat kepada Direksi.",
+          "dutiesTitle": "Fungsi dan Tugas Dewan Komisaris :",
+          "duties": [
+            "Melakukan pengawasan terhadap kebijakan pengurusan yang dijalankan oleh Direksi.",
+            "Memberikan nasihat dan masukan strategis kepada Direksi demi kepentingan Perseroan.",
+            "Memantau dan mengevaluasi efektivitas pelaksanaan Good Corporate Governance (GCG).",
+            "Membentuk Komite Audit dan Komite Nominasi & Remunerasi untuk mendukung pelaksanaan tugas pengawasan.",
+            "Menyusun laporan tahunan pelaksanaan pengawasan Dewan Komisaris kepada Rapat Umum Pemegang Saham (RUPS)."
+          ]
+        },
+        {
+          "heading": "Pedoman Kerja (Charter) Direksi",
+          "content": "Direksi adalah organ Perseroan yang berwenang dan bertanggung jawab penuh atas pengurusan Perseroan untuk kepentingan Perseroan, sesuai dengan maksud dan tujuan Perseroan serta mewakili Perseroan, baik di dalam maupun di luar pengadilan.",
+          "dutiesTitle": "Tugas dan Tanggung Jawab Direksi :",
+          "duties": [
+            "Memimpin dan mengelola jalannya Perseroan sesuai dengan kebijakan yang ditetapkan RUPS dan Anggaran Dasar.",
+            "Menyusun rencana kerja tahunan dan rencana jangka panjang Perseroan.",
+            "Mengelola risiko operasional, keuangan, dan kepatuhan secara berkelanjutan.",
+            "Memelihara pembukuan dan administrasi keuangan sesuai Standar Akuntansi Keuangan.",
+            "Menyiapkan laporan keuangan berkala untuk disampaikan kepada OJK dan Bursa Efek Indonesia.",
+            "Menjalin hubungan baik dan transparan dengan seluruh pemangku kepentingan (stakeholders).",
+            "Menjaga kerahasiaan informasi penting Perseroan yang dapat mempengaruhi harga efek.",
+            "Melaksanakan prinsip-prinsip keterbukaan, akuntabilitas, tanggung jawab, independensi, dan kewajaran.",
+            "Mengawasi kinerja seluruh entitas anak perusahaan dan unit bisnis.",
+            "Mempertanggungjawabkan pelaksanaan tugas pengurusan kepada RUPS tahunan."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2",
+      "tabKey": "nominasi-remunerasi",
+      "tabTitle": "Nominasi dan Remunerasi",
+      "documentTitle": "Pedoman Komite Nominasi dan Remunerasi",
+      "pdfUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/PEDOMAN_KOMITE_REMUNERASI_DAN_NOMINASI_-_Okt18.pdf",
+      "sections": [
+        {
+          "heading": "Komite Nominasi dan Remunerasi",
+          "content": "Sesuai dengan Peraturan Otoritas Jasa Keuangan No. 34/POJK.04/2014 tentang Komite Nominasi dan Remunerasi Emiten atau Perusahaan Publik, fungsi nominasi dan remunerasi di PT Kota Satu Properti Tbk dijalankan untuk membantu Dewan Komisaris dalam menyusun kriteria seleksi serta menetapkan paket remunerasi bagi anggota Dewan Komisaris dan Direksi.",
+          "dutiesTitle": "Tugas Pokok Komite Nominasi dan Remunerasi :",
+          "duties": [
+            "Menyusun komposisi dan kriteria seleksi calon anggota Direksi dan Dewan Komisaris.",
+            "Mengevaluasi kinerja anggota Direksi dan Dewan Komisaris secara obyektif dan independen.",
+            "Merumuskan struktur dan besaran paket remunerasi yang kompetitif sesuai kinerja dan standar industri.",
+            "Memberikan rekomendasi tertulis kepada Dewan Komisaris terkait usulan calon dan kebijakan remunerasi."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-3",
+      "tabKey": "piagam-audit-internal",
+      "tabTitle": "Piagam Unit Audit Internal",
+      "documentTitle": "Piagam Unit Audit Internal",
+      "pdfUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/Piagam_Unit_Audit_Internal_Okt18.pdf",
+      "sections": [
+        {
+          "heading": "Piagam Unit Audit Internal",
+          "content": "Unit Audit Internal bertugas memberikan assurance dan konsultasi yang independen dan obyektif, yang dirancang untuk memberikan nilai tambah dan meningkatkan kegiatan operasional Perseroan. Unit Audit Internal membantu Perseroan mencapai tujuannya melalui pendekatan sistematis dan teratur dalam mengevaluasi efektivitas manajemen risiko, pengendalian internal, dan proses tata kelola.",
+          "dutiesTitle": "Ruang Lingkup dan Tanggung Jawab :",
+          "duties": [
+            "Menyusun dan melaksanakan rencana audit internal tahunan berbasis risiko.",
+            "Menguji dan mengevaluasi pelaksanaan pengendalian internal dan sistem manajemen risiko.",
+            "Melakukan pemeriksaan dan penilaian atas efisiensi dan efektivitas di seluruh divisi Perseroan.",
+            "Menyampaikan laporan hasil audit dan rekomendasi perbaikan kepada Direktur Utama dan Dewan Komisaris."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-4",
+      "tabKey": "komite-audit",
+      "tabTitle": "Komite Audit",
+      "documentTitle": "Piagam Komite Audit",
+      "pdfUrl": "https://kotasatuproperti.com/wp-content/uploads/2021/04/PIAGAM_KOMITE_AUDIT_-_Okt18.pdf",
+      "sections": [
+        {
+          "heading": "Piagam Komite Audit",
+          "content": "Komite Audit dibentuk oleh dan bertanggung jawab kepada Dewan Komisaris dalam membantu melaksanakan tugas dan fungsinya. Komite Audit bertindak secara independen dalam menjalankan tugasnya guna memastikan integritas pelaporan keuangan dan kepatuhan terhadap regulasi pasar modal.",
+          "dutiesTitle": "Tanggung Jawab Utama Komite Audit :",
+          "duties": [
+            "Melakukan penelaahan atas informasi keuangan yang akan dikeluarkan Perseroan seperti laporan keuangan dan proyeksi.",
+            "Melakukan penelaahan atas ketaatan Perseroan terhadap peraturan perundang-undangan di bidang Pasar Modal.",
+            "Memberikan rekomendasi independen kepada Dewan Komisaris mengenai penunjukan Akuntan Publik eksternal.",
+            "Menelaah pelaksanaan pemeriksaan oleh auditor internal dan mengawasi pelaksanaan tindak lanjut oleh Direksi."
+          ]
+        }
+      ]
+    }
+  ]
+}
