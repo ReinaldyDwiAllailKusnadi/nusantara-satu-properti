@@ -175,11 +175,11 @@ html {
 .nav-link-item.active::after {
   content: '';
   position: absolute;
-  bottom: 8px;
+  bottom: 4px;
   left: 11px;
   right: 11px;
-  height: 2px;
-  background-color: #1c1c1c;
+  height: 2.5px;
+  background-color: #333333;
 }
 @media (min-width: 1280px) {
   .nav-link-item.active::after {

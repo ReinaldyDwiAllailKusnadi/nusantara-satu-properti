@@ -2,14 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [unitBisnisDropdown, setUnitBisnisDropdown] = useState(false);
-  const [activeMenu, setActiveMenu] = useState('beranda');
+  const [activeMenu, setActiveMenu] = useState(
+    pathname === '/profil-perusahaan' ? 'profil-perusahaan' : 'beranda'
+  );
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    if (pathname === '/profil-perusahaan') {
+      setActiveMenu('profil-perusahaan');
+      return;
+    }
+
     const handleScroll = () => {
       // Toggle sticky opacity blur effect when scrolled down
       if (window.scrollY > 40) {
@@ -18,7 +27,7 @@ export default function Navbar() {
         setIsScrolled(false);
       }
 
-      // Track active section for underline
+      // Track active section for underline on homepage
       const sections = ['beranda', 'profil-perusahaan', 'unit-bisnis', 'milestone', 'penghargaan', 'informasi-investor', 'kontak'];
       const scrollPos = window.scrollY + 140;
       for (const s of sections) {
@@ -36,7 +45,7 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <header className="w-full sticky top-0 z-50 transition-all duration-300">
@@ -47,24 +56,24 @@ export default function Navbar() {
         } px-4 sm:px-8`}
       >
         <div className="max-w-[1400px] mx-auto flex items-center justify-end">
-          <div className="flex items-center gap-[15px]">
+          <div className="flex items-center gap-[12px]">
             {/* Indonesian Flag */}
             <button 
               title="Bahasa Indonesia"
-              className="w-[20px] h-[15px] border border-white/20 overflow-hidden flex flex-col hover:opacity-80 transition-opacity"
+              className="w-[22px] h-[15px] border border-white/20 overflow-hidden flex flex-col hover:opacity-85 transition-opacity cursor-pointer"
             >
-              <div className="h-1/2 bg-[#CE1126]"></div>
-              <div className="h-1/2 bg-white"></div>
+              <div className="h-1/2 bg-[#CE1126] w-full"></div>
+              <div className="h-1/2 bg-white w-full"></div>
             </button>
             {/* US Flag */}
             <button 
               title="English"
-              className="w-[20px] h-[15px] border border-white/20 overflow-hidden relative bg-[#B22234] hover:opacity-80 transition-opacity"
+              className="w-[22px] h-[15px] border border-white/20 overflow-hidden relative bg-[#B22234] hover:opacity-85 transition-opacity cursor-pointer"
             >
               <div className="absolute top-0 left-0 w-[10px] h-[8px] bg-[#3C3B6E] flex items-center justify-center">
-                <span className="text-[6px] text-white leading-none">&#9733;</span>
+                <span className="text-[6px] text-white leading-none font-bold">&#9733;</span>
               </div>
-              <div className="h-[2px] bg-white mt-[3px]"></div>
+              <div className="h-[2px] bg-white mt-[2.5px]"></div>
               <div className="h-[2px] bg-white mt-[2px]"></div>
               <div className="h-[2px] bg-white mt-[2px]"></div>
             </button>
@@ -83,11 +92,11 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 min-h-[76px] sm:min-h-[80px] flex items-center justify-between">
           {/* Left: Brand Logo */}
           <div className="flex-shrink-0">
-            <Link href="#beranda" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <img
-                src="/images/nusasatu-logo.svg"
-                alt="Nusasatu Properti Tbk"
-                className="w-[195px] sm:w-[215px] h-auto object-contain block"
+                src="/images/orig-logo.png"
+                alt="Kota Satu Properti Tbk"
+                className="w-[195px] sm:w-[220px] h-auto object-contain block"
               />
             </Link>
           </div>

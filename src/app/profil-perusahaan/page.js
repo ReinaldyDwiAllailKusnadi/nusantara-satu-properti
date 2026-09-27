@@ -13,89 +13,99 @@ export default function ProfilPerusahaanPage() {
       <Navbar />
 
       <main className="flex-1">
-        {/* SECTION 1: Informasi Perusahaan */}
-        <section className="pt-12 sm:pt-16 pb-12 bg-white">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
-            <div className="mb-8">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-[#19375e] tracking-tight mb-2">
-                Nusasatu Properti, Tbk.
-              </h1>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#19375e] tracking-tight">
-                Informasi Perusahaan
-              </h2>
-              <div className="w-[60px] h-[3px] bg-[#19375e] mt-3"></div>
-            </div>
+        {/* ========================================================= */}
+        {/* SECTION 1: Informasi Perusahaan (Exact Match to Screenshot) */}
+        {/* ========================================================= */}
+        <section 
+          className="relative pt-[70px] sm:pt-[90px] pb-[50px] sm:pb-[65px] bg-[#22406F]/[0.11] overflow-hidden"
+          style={{
+            backgroundImage: "url('/images/rm222batch2-mind-03-scaled.jpg')",
+            backgroundPosition: "top center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
+          }}
+        >
+          <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+            {/* Subtitle */}
+            <h3 className="text-[16px] sm:text-[20px] font-extrabold tracking-[3.7px] text-[#22406F] font-sans mb-1">
+              Kota Satu Properti, Tbk.
+            </h3>
 
-            <div className="space-y-5 text-[15px] sm:text-[16px] text-slate-700 leading-relaxed">
+            {/* Main Title (No divider line, exact match) */}
+            <h1 className="text-[32px] sm:text-[45px] font-extrabold uppercase tracking-[2.1px] text-[#22406F] font-sans mb-6 sm:mb-8 leading-tight">
+              INFORMASI PERUSAHAAN
+            </h1>
+
+            {/* Paragraphs with exact #007BBB cyan/blue color and justified text */}
+            <div className="space-y-6 text-[16px] sm:text-[19px] leading-[1.75] text-[#007BBB] text-justify font-sans">
               <p>
-                <strong className="text-slate-900">PT Nusasatu Properti Tbk</strong> (&ldquo;Perseroan&rdquo;), berkedudukan di Kabupaten Semarang, dengan akta pendiriannya sebagaimana dimuat dalam Akta Pendirian Perseroan Terbatas No. 6 tanggal 3 Oktober 2012, dibuat di hadapan Maria Yosefa Deni, S.H., Notaris di Kota Semarang. Akta Pendirian Perseroan telah memperoleh pengesahan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia sebagaimana ternyata dari Surat Keputusannya No. AHU-58590.AH.01.01.Tahun 2012 tanggal 19 November 2012.
+                PT Kota Satu Properti Tbk (&ldquo;Perseroan&rdquo;), berkedudukan di Kabupaten Semarang, dengan akta pendiriannya sebagaimana dimuat dalam Akta Pendirian Perseroan Terbatas No. 6 tanggal 3 Oktober 2012, dibuat di hadapan Maria Yosefa Deni, S.H., Notaris di Kota Semarang. Akta Pendirian Perseroan telah memperoleh pengesahan Menteri Hukum dan Hak Asasi Manusia Republik Indonesia sebagaimana ternyata dari Surat Keputusannya No. AHU-58590.AH.01.01.Tahun 2012 tanggal 19 November 2012
               </p>
+
               <p>
-                Pada tahun 2018 Perseroan melaksanakan Penawaran Umum Perdana Saham atau <em>Initial Public Offering</em> (IPO) kepada masyarakat dengan menerbitkan 500.000.000 lembar saham dengan nilai nominal Rp 100,- di Bursa Efek Indonesia. Perseroan dengan kode ticker <strong className="text-[#19375e]">NUSA</strong> telah mendapatkan pernyataan efektif dari Otoritas Jasa Keuangan pada tanggal 5 November 2018.
+                Pada tahun 2018 Perseroan melaksanakan Penawaran Umum Perdana Saham atau Initial Public Offering (IPO) kepada masyarakat dengan menerbitkan 500.000.000 lembar saham dengan nilai nominal Rp 100,- di Bursa Efek Indonesia. Perseroan dengan kode ticker SATU telah mendapatkan pernyataan efektif dari Otoritas Jasa Keuangan pada tanggal 5 November 2018.
               </p>
+
               <p>
                 Perseroan berkedudukan di Kabupaten Semarang, memiliki dua kegiatan usaha utama yaitu di bidang pengembangan properti dan perhotelan. Posisi Perseroan merupakan induk perusahaan, atas seluruh entitas anak perusahaan yang dimiliki melalui investasi penyertaan kepemilikan saham.
               </p>
+
               <p>
-                Kegiatan usaha yang saat ini dilaksanakan oleh Perseroan adalah di bidang pembangunan, pengelolaan, dan perdagangan real estate/properti. Kegiatan usaha Perseroan dan Entitas Anak memiliki keterkaitan satu sama lain yaitu melakukan kegiatan pembangunan, pengelolaan dan perdagangan real estate/properti.
+                Kegiatan usaha yang saat ini dilaksanakan oleh Perseroan adalah di bidang pembangunan, pengelolaan, dan perdagangan real estate/properti. Kegiatan usaha Perseroan dan Entitas Anak memiliki keterkaitan satu sama lain yaitu melakukan kegiatan pembangunan, pengelolaan dan perdagangan real estate/properti
               </p>
             </div>
           </div>
         </section>
 
-        {/* SECTION 2: Visi, Misi & Values 4P */}
-        <section className="py-12 bg-[#F8FAFC] border-y border-slate-200/80">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* ========================================================= */}
+        {/* SECTION 2: Visi, Misi & Values 4P                         */}
+        {/* ========================================================= */}
+        <section className="py-14 sm:py-20 bg-white">
+          <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 items-start">
               
-              {/* Card 1: Visi */}
-              <div className="bg-white p-7 rounded-xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  <img src="/images/1.png" alt="Visi" className="w-16 h-16 object-contain" />
+              {/* Visi */}
+              <div className="flex flex-col items-start space-y-4">
+                <div className="w-20 h-20 flex items-center justify-start">
+                  <img src="/images/1.png" alt="Visi Icon" className="w-16 h-16 object-contain" />
                 </div>
-                <h3 className="text-xl font-extrabold text-[#19375e] mb-3">Visi :</h3>
-                <p className="text-[14px] text-slate-600 leading-relaxed font-medium">
+                <h3 className="text-[26px] sm:text-[30px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+                  Visi :
+                </h3>
+                <p className="text-[17px] sm:text-[18px] text-[#007BBB] leading-relaxed text-justify">
                   Number one is delivering superior performance through SATU philosophy
                 </p>
               </div>
 
-              {/* Card 2: Misi */}
-              <div className="bg-white p-7 rounded-xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  <img src="/images/3.png" alt="Misi" className="w-16 h-16 object-contain" />
+              {/* Values 4P */}
+              <div className="flex flex-col items-start space-y-4">
+                <div className="w-20 h-20 flex items-center justify-start">
+                  <img src="/images/2.png" alt="Values 4P Icon" className="w-16 h-16 object-contain" />
                 </div>
-                <h3 className="text-xl font-extrabold text-[#19375e] mb-3">Misi :</h3>
-                <ul className="text-[13.5px] text-slate-600 text-left space-y-2 leading-relaxed">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#19375e] font-bold mt-0.5">•</span>
-                    <span><strong>Synergy</strong>, internal & external for sustainable best result</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#19375e] font-bold mt-0.5">•</span>
-                    <span><strong>Automation</strong>, by digital system for professional business operation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#19375e] font-bold mt-0.5">•</span>
-                    <span><strong>Talent development</strong>, as continuous organization growth and best place to work</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#19375e] font-bold mt-0.5">•</span>
-                    <span><strong>Unique concept</strong>, for competitive and profitable business</span>
-                  </li>
-                </ul>
+                <h3 className="text-[26px] sm:text-[30px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+                  Values 4P :
+                </h3>
+                <div className="text-[17px] sm:text-[18px] text-[#007BBB] space-y-1 font-normal leading-[32px]">
+                  <div>Profit</div>
+                  <div>Professional</div>
+                  <div>Prestige</div>
+                  <div>Public Oriented</div>
+                </div>
               </div>
 
-              {/* Card 3: Values 4P */}
-              <div className="bg-white p-7 rounded-xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  <img src="/images/2.png" alt="Values 4P" className="w-16 h-16 object-contain" />
+              {/* Misi */}
+              <div className="flex flex-col items-start space-y-4">
+                <div className="w-20 h-20 flex items-center justify-start">
+                  <img src="/images/3.png" alt="Misi Icon" className="w-16 h-16 object-contain" />
                 </div>
-                <h3 className="text-xl font-extrabold text-[#19375e] mb-3">Values 4P :</h3>
-                <div className="text-[14px] text-slate-700 font-semibold space-y-2 w-full max-w-[180px]">
-                  <div className="py-1.5 px-3 bg-slate-50 border border-slate-100 rounded-md">Profit</div>
-                  <div className="py-1.5 px-3 bg-slate-50 border border-slate-100 rounded-md">Professional</div>
-                  <div className="py-1.5 px-3 bg-slate-50 border border-slate-100 rounded-md">Prestige</div>
-                  <div className="py-1.5 px-3 bg-slate-50 border border-slate-100 rounded-md">Public Oriented</div>
+                <h3 className="text-[26px] sm:text-[30px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+                  Misi :
+                </h3>
+                <div className="text-[16px] sm:text-[17px] text-[#007BBB] space-y-2.5 text-justify leading-relaxed">
+                  <p>Synergy, internal & external for sustainable best result</p>
+                  <p>Automation, by digital system for professional business operation</p>
+                  <p>Talent development, as continuous organization growth and best place to work</p>
+                  <p>Unique concept, for competitive and profitable business</p>
                 </div>
               </div>
 
@@ -103,35 +113,49 @@ export default function ProfilPerusahaanPage() {
           </div>
         </section>
 
-        {/* SECTION 3: Manajemen */}
-        <section className="py-14 sm:py-20 bg-white">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#19375e] tracking-tight uppercase">
-                Manajemen
-              </h2>
-              <div className="w-[70px] h-[3.5px] bg-[#19375e] mx-auto mt-4 rounded-full"></div>
-            </div>
+        {/* ========================================================= */}
+        {/* SECTION 3: Manajemen                                      */}
+        {/* ========================================================= */}
+        <section className="bg-white">
+          <div className="text-center pt-12 pb-8">
+            <h2 className="text-[34px] sm:text-[45px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+              Manajemen
+            </h2>
+            <div className="w-[18%] max-w-[120px] h-[4px] bg-[#22406F] mx-auto mt-3"></div>
+          </div>
 
-            <div className="space-y-12 sm:space-y-16">
-              
-              {/* Executive 1: Arief Sugiyo */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#FDFDFD] p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
-                <div className="md:col-span-4 lg:col-span-3 flex justify-center">
-                  <div className="w-48 sm:w-56 overflow-hidden rounded-xl shadow-md border-2 border-slate-100">
-                    <img
-                      src="/images/arief-profil.png"
-                      alt="Arief Sugiyo - Komisaris Utama"
-                      className="w-full h-auto object-cover hover:scale-103 transition-transform duration-300"
+          {/* Executive 1: Arief Sugiyo (Deep Blue Overlay, Photo Left, Text Right) */}
+          <div 
+            className="relative py-12 sm:py-16 text-white overflow-hidden"
+            style={{
+              backgroundImage: "url('/images/orva-studio-YC8qqp50BdA-unsplash-scaled.jpg')",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover"
+            }}
+          >
+            <div className="absolute inset-0 bg-[#22406F]/[0.85] z-0"></div>
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-10 gap-8 lg:gap-12 items-center">
+                {/* Photo 30% */}
+                <div className="md:col-span-3 flex justify-center md:justify-start">
+                  <div className="w-52 sm:w-60 max-w-full overflow-hidden shadow-2xl rounded-sm">
+                    <img 
+                      src="/images/arief-profil.png" 
+                      alt="Arief Sugiyo" 
+                      className="w-full h-auto object-cover block"
                     />
                   </div>
                 </div>
-                <div className="md:col-span-8 lg:col-span-9 space-y-3">
-                  <div>
-                    <h3 className="text-2xl font-extrabold text-[#19375e]">Arief Sugiyo</h3>
-                    <p className="text-[15px] font-bold text-amber-600 uppercase tracking-wider">Komisaris Utama</p>
-                  </div>
-                  <div className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed space-y-3 font-normal">
+                {/* Text 70% */}
+                <div className="md:col-span-7 space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-wide">
+                    Arief Sugiyo
+                  </h3>
+                  <h4 className="text-[17px] sm:text-[18px] font-extrabold uppercase text-white tracking-wider pb-1">
+                    Komisaris Utama
+                  </h4>
+                  <div className="text-[15px] sm:text-[17px] text-white/95 leading-relaxed text-justify space-y-3 font-normal">
                     <p>
                       Beliau merupakan seorang profesional berpengalaman di industri pasar modal, dengan latar belakang akademis dalam bidang Manajemen Informatika dari Universitas Bina Nusantara. Setelah lulus, beliau memulai kariernya di beberapa perusahaan sekuritas ternama, di mana beliau terus mengembangkan keahlian serta jaringan yang kuat di industri keuangan dan investasi.
                     </p>
@@ -141,193 +165,243 @@ export default function ProfilPerusahaanPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              {/* Executive 2: Ibnu Dody Prayitno */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#FDFDFD] p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
-                <div className="md:col-span-4 lg:col-span-3 flex justify-center">
-                  <div className="w-48 sm:w-56 overflow-hidden rounded-xl shadow-md border-2 border-slate-100">
-                    <img
-                      src="/images/ibnu-dody-profil.png"
-                      alt="Ibnu Dody Prayitno - Komisaris Independen"
-                      className="w-full h-auto object-cover hover:scale-103 transition-transform duration-300"
-                    />
-                  </div>
-                </div>
-                <div className="md:col-span-8 lg:col-span-9 space-y-3">
-                  <div>
-                    <h3 className="text-2xl font-extrabold text-[#19375e]">Ibnu Dody Prayitno</h3>
-                    <p className="text-[15px] font-bold text-amber-600 uppercase tracking-wider">Komisaris Independen</p>
-                  </div>
-                  <div className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed space-y-3 font-normal">
+          {/* Executive 2: Ibnu Dody Prayitno (White Overlay, Text Left, Photo Right) */}
+          <div 
+            className="relative py-12 sm:py-16 text-[#22406F] overflow-hidden"
+            style={{
+              backgroundImage: "url('/images/valeriia-bugaiova-_pPHgeHz1uk-unsplash-scaled.jpg')",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover"
+            }}
+          >
+            <div className="absolute inset-0 bg-white/[0.88] z-0"></div>
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-10 gap-8 lg:gap-12 items-center">
+                {/* Text 70% */}
+                <div className="md:col-span-7 space-y-3 order-2 md:order-1">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold uppercase text-[#22406F] tracking-wide">
+                    Ibnu Dody Prayitno
+                  </h3>
+                  <h4 className="text-[17px] sm:text-[18px] font-extrabold uppercase text-[#22406F] tracking-wider pb-1">
+                    Komisaris Independen
+                  </h4>
+                  <div className="text-[15px] sm:text-[17px] text-[#22406F]/95 leading-relaxed text-justify space-y-3 font-normal">
                     <p>
-                      Beliau telah membawa lebih dari 16 tahun pengalaman profesional dalam bidang hukum dan manajemen operasional ke jabatannya sebagai Komisaris Independen di PT Nusasatu Properti Tbk. Beliau adalah lulusan Sarjana Hukum dari Universitas 17 Agustus Semarang pada tahun 2009, dan telah membangun karier yang sukses dengan berbagai peran manajerial di sektor koperasi dan lembaga keuangan. Salah satu pencapaian penting dalam kariernya adalah saat menjabat sebagai Manager Operasional Kospin SEKARTAMA pada periode 2018–2019, di mana beliau berhasil mengimplementasikan berbagai inisiatif strategis untuk meningkatkan efisiensi dan kepatuhan operasional.
+                      Beliau telah membawa lebih dari 16 tahun pengalaman profesional dalam bidang hukum dan manajemen operasional ke jabatannya sebagai Komisaris Independen di PT Kota Satu Properti Tbk. Beliau adalah lulusan Sarjana Hukum dari Universitas 17 Agustus Semarang pada tahun 2009, dan telah membangun karier yang sukses dengan berbagai peran manajerial di sektor koperasi dan lembaga keuangan. Salah satu pencapaian penting dalam kariernya adalah saat menjabat sebagai Manager Operasional Kospin SEKARTAMA pada periode 2018–2019, di mana beliau berhasil mengimplementasikan berbagai inisiatif strategis untuk meningkatkan efisiensi dan kepatuhan operasional.
                     </p>
                     <p>
                       Sejak tahun 2020, Ibnu Dody Prayitno memegang peran sebagai Manager Kepatuhan di Kospin SEKARTAMA, di mana ia bertanggung jawab untuk memastikan bahwa operasi perusahaan berjalan sesuai dengan regulasi dan standar industri yang berlaku. Dengan pengetahuan hukum yang mendalam serta pengalaman operasional yang solid, Ibnu Dody Prayitno memberikan perspektif independen yang berharga dalam pengawasan dan tata kelola perusahaan. Sebagai Komisaris Independen, Ibnu Dody Prayitno memiliki tanggung jawab untuk memastikan bahwa kepentingan pemegang saham dilindungi dan bahwa keputusan perusahaan dibuat dengan integritas dan transparansi yang tinggi.
                     </p>
                   </div>
                 </div>
-              </div>
-
-              {/* Executive 3: Momog Irnawan */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#FDFDFD] p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
-                <div className="md:col-span-4 lg:col-span-3 flex justify-center">
-                  <div className="w-48 sm:w-56 overflow-hidden rounded-xl shadow-md border-2 border-slate-100">
-                    <img
-                      src="/images/momog-irnawan-profil.png"
-                      alt="Momog Irnawan - Direktur Utama"
-                      className="w-full h-auto object-cover hover:scale-103 transition-transform duration-300"
+                {/* Photo 30% */}
+                <div className="md:col-span-3 flex justify-center md:justify-end order-1 md:order-2">
+                  <div className="w-52 sm:w-60 max-w-full overflow-hidden shadow-2xl rounded-sm">
+                    <img 
+                      src="/images/ibnu-dody-profil.png" 
+                      alt="Ibnu Dody Prayitno" 
+                      className="w-full h-auto object-cover block"
                     />
                   </div>
                 </div>
-                <div className="md:col-span-8 lg:col-span-9 space-y-3">
-                  <div>
-                    <h3 className="text-2xl font-extrabold text-[#19375e]">Momog Irnawan</h3>
-                    <p className="text-[15px] font-bold text-amber-600 uppercase tracking-wider">Direktur Utama</p>
-                  </div>
-                  <div className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed space-y-3 font-normal">
-                    <p>
-                      Berkewarganegaraan Indonesia, beliau merupakan lulusan Sarjana Ekonomi Alumni Universitas Mahasaraswati. Beliau menjabat sebagai Direktur Utama di PT Nusasatu Properti Tbk. sejak mulai bergabung pada Agustus 2022 hingga kini. Memiliki pengalaman yang luas di bidang Senior Executive pada industri FMCG dan B to C Automotive selama 26 tahun.
-                    </p>
-                    <p>
-                      Tercatat beliau pernah menjabat sebagai Direktur Danone Aqua sejak Tahun 2012 – 2018, lalu juga menjabat sebagai CEO dari PT Putra Mustika dari Juli 2018 – April 2020, dan saat ini selain memegang PT Nusasatu Properti Tbk, beliau juga menjabat sebagai CEO PT RT Mart Group Indonesia sejak Mei 2020.
-                    </p>
-                  </div>
-                </div>
               </div>
+            </div>
+          </div>
 
-              {/* Executive 4: Leo Agung Vito Wicaksana */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#FDFDFD] p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
-                <div className="md:col-span-4 lg:col-span-3 flex justify-center">
-                  <div className="w-48 sm:w-56 overflow-hidden rounded-xl shadow-md border-2 border-slate-100">
-                    <img
-                      src="/images/leo-agung-profil.png"
-                      alt="Leo Agung Vito Wicaksana - Direktur"
-                      className="w-full h-auto object-cover hover:scale-103 transition-transform duration-300"
+          {/* Executive 3: Momog Irnawan (Deep Blue Overlay, Photo Left, Text Right) */}
+          <div 
+            className="relative py-12 sm:py-16 text-white overflow-hidden"
+            style={{
+              backgroundImage: "url('/images/sara-dubler-Koei_7yYtIo-unsplash-scaled.jpg')",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover"
+            }}
+          >
+            <div className="absolute inset-0 bg-[#22406F]/[0.85] z-0"></div>
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-10 gap-8 lg:gap-12 items-center">
+                {/* Photo 30% */}
+                <div className="md:col-span-3 flex justify-center md:justify-start">
+                  <div className="w-52 sm:w-60 max-w-full overflow-hidden shadow-2xl rounded-sm">
+                    <img 
+                      src="/images/momog-irnawan-profil.png" 
+                      alt="Momog Irnawan" 
+                      className="w-full h-auto object-cover block"
                     />
                   </div>
                 </div>
-                <div className="md:col-span-8 lg:col-span-9 space-y-3">
-                  <div>
-                    <h3 className="text-2xl font-extrabold text-[#19375e]">Leo Agung Vito Wicaksana</h3>
-                    <p className="text-[15px] font-bold text-amber-600 uppercase tracking-wider">Direktur</p>
-                  </div>
-                  <div className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed space-y-3 font-normal">
+                {/* Text 70% */}
+                <div className="md:col-span-7 space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-wide">
+                    Momog Irnawan
+                  </h3>
+                  <h4 className="text-[17px] sm:text-[18px] font-extrabold uppercase text-white tracking-wider pb-1">
+                    Direktur Utama
+                  </h4>
+                  <div className="text-[15px] sm:text-[17px] text-white/95 leading-relaxed text-justify space-y-3 font-normal">
                     <p>
-                      Berkewarganegaraan Indonesia, beliau merupakan lulusan Sarjana Ekonomi dari Universitas Pelita Harapan dengan pengalaman yang luas di beberapa Perusahaan dimana pada riwayat karirnya pernah menjabat sebagai Public Relations di Kospin Sekartama di tahun 2015, Komisaris PT RT Mart Indonesia tahun 2020, dan Direktur PT Rizki Piara Sejahtera tahun 2020. Saat ini beliau bertanggung jawab sebagai Direktur untuk PT Nusasatu Tbk. sejak mulai bergabung pada Agustus 2022 hingga kini dengan membawahi seluruh lini bisnis yang berjalan di dalamnya.
+                      Berkewarganegaraan Indonesia, dengan merupakan lulusan Sarjana Ekonomi Alumni Universitas Mahasaraswati. Beliau menjabat sebagai Direktur Utama di PT Kota Satu Properti Tbk. sejak mulai bergabung pada Agustus 2022 hingga kini. Memiliki pengalaman yang luas di bidang Senior Executive pada industri FMCG dan B to C Automotive selama 26 tahun.
+                    </p>
+                    <p>
+                      Tercatat beliau pernah menjabat sebagai Direktur Danone Aqua sejak Tahun 2012 – 2018, lalu juga menjabat sebagai CEO dari PT Putra Mustika dari Juli 2018 – April 2020, dan saat ini selain memegang PT Kota Satu Properti Tbk, beliau juga menjabat sebagai CEO PT RT Mart Group Indonesia sejak Mei 2020.
                     </p>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
+          {/* Executive 4: Leo Agung Vito Wicaksana (White Overlay, Text Left, Photo Right) */}
+          <div 
+            className="relative py-12 sm:py-16 text-[#22406F] overflow-hidden"
+            style={{
+              backgroundImage: "url('/images/li-yang-a8iCZvtrHpQ-unsplash-scaled.jpg')",
+              backgroundPosition: "center center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover"
+            }}
+          >
+            <div className="absolute inset-0 bg-white/[0.88] z-0"></div>
+            <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-10 gap-8 lg:gap-12 items-center">
+                {/* Text 70% */}
+                <div className="md:col-span-7 space-y-3 order-2 md:order-1">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold uppercase text-[#22406F] tracking-wide">
+                    Leo Agung Vito Wicaksana
+                  </h3>
+                  <h4 className="text-[17px] sm:text-[18px] font-extrabold uppercase text-[#22406F] tracking-wider pb-1">
+                    Direktur
+                  </h4>
+                  <div className="text-[15px] sm:text-[17px] text-[#22406F]/95 leading-relaxed text-justify space-y-3 font-normal">
+                    <p>
+                      Berkewarganegaraan Indonesia, beliau merupakan lulusan Sarjana Ekonomi dari Universitas Pelita Harapan dengan pengalaman yang luas di beberapa Perusahaan dimana pada riwayat karirnya pernah menjabat sebagai Public Relations di Kospin Sekartama di tahun 2015, Komisaris PT RT Mart Indonesia tahun 2020, dan Direktur PT Rizki Piara Sejahtera tahun 2020. Saat ini beliau bertanggung jawab sebagai Direktur untuk PT Kota Satu Tbk. sejak mulai Begabung pada Agustus 2022 hingga kini dengen membawai seluruh lini bisnis yang berjalan di dalamnya.
+                    </p>
+                  </div>
+                </div>
+                {/* Photo 30% */}
+                <div className="md:col-span-3 flex justify-center md:justify-end order-1 md:order-2">
+                  <div className="w-52 sm:w-60 max-w-full overflow-hidden shadow-2xl rounded-sm">
+                    <img 
+                      src="/images/leo-agung-profil.png" 
+                      alt="Leo Agung Vito Wicaksana" 
+                      className="w-full h-auto object-cover block"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 4: Struktur Perusahaan */}
-        <section className="py-14 sm:py-16 bg-[#F8FAFC] border-y border-slate-200/80">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
-            <div className="text-center mb-10 sm:mb-12">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#19375e] tracking-tight uppercase">
-                Struktur Perusahaan
-              </h2>
-              <div className="w-[70px] h-[3.5px] bg-[#19375e] mx-auto mt-4 rounded-full"></div>
-            </div>
+        {/* ========================================================= */}
+        {/* SECTION 4: Struktur Perusahaan                            */}
+        {/* ========================================================= */}
+        <section className="py-14 sm:py-20 bg-white">
+          <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16 text-center">
+            <h2 className="text-[34px] sm:text-[45px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+              Struktur Perusahaan
+            </h2>
+            <div className="w-[18%] max-w-[120px] h-[4px] bg-[#22406F] mx-auto mt-3 mb-10"></div>
 
             <div 
               onClick={() => setShowOrgModal(true)}
-              className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer hover:shadow-lg transition-shadow group flex flex-col items-center"
+              className="cursor-pointer group inline-block max-w-full"
             >
               <img
                 src="/images/69d33072821d7_struktur-organisasi-perusahaan-scaled-e1775452552601.webp"
-                alt="Struktur Organisasi PT Nusasatu Properti Tbk"
-                className="w-full max-w-[1000px] h-auto object-contain block group-hover:scale-101 transition-transform"
+                alt="Struktur Organisasi"
+                className="w-full h-auto object-contain block mx-auto group-hover:opacity-95 transition-opacity"
               />
-              <p className="text-xs text-slate-500 mt-4 flex items-center gap-1.5 font-medium">
-                <svg className="w-4 h-4 text-[#19375e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-                </svg>
-                <span>Klik gambar untuk memperbesar</span>
-              </p>
             </div>
           </div>
         </section>
 
-        {/* SECTION 5: Komposisi Pemegang Saham */}
-        <section className="py-14 sm:py-20 bg-white">
-          <div className="max-w-[1100px] mx-auto px-4 sm:px-8">
-            <div className="text-center mb-10 sm:mb-12">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#19375e] tracking-tight uppercase">
-                Komposisi Pemegang Saham
-              </h2>
-              <div className="w-[70px] h-[3.5px] bg-[#19375e] mx-auto mt-4 rounded-full"></div>
-            </div>
+        {/* ========================================================= */}
+        {/* SECTION 5: Komposisi Pemegang Saham                       */}
+        {/* ========================================================= */}
+        <section className="py-14 sm:py-20 bg-[#22406F]/[0.11]">
+          <div className="max-w-[1100px] mx-auto px-6 sm:px-12 lg:px-16 text-center">
+            <h2 className="text-[34px] sm:text-[45px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+              Komposisi Pemegang Saham
+            </h2>
+            <div className="w-[18%] max-w-[120px] h-[4px] bg-[#22406F] mx-auto mt-3 mb-10"></div>
 
             {/* Table */}
-            <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm mb-8">
-              <table className="w-full text-left border-collapse">
+            <div className="bg-white overflow-x-auto shadow-sm rounded-sm mb-10">
+              <table className="w-full text-center border-collapse">
                 <thead>
-                  <tr className="bg-[#19375e] text-white text-[14px] sm:text-[15px] font-extrabold uppercase tracking-wider">
-                    <th className="py-4 px-6">PEMEGANG SAHAM</th>
-                    <th className="py-4 px-6 text-right">JUMLAH SAHAM</th>
-                    <th className="py-4 px-6 text-right">PROSENTASE</th>
+                  <tr className="border-b border-slate-200">
+                    <th className="py-4 px-6 font-extrabold text-[18px] sm:text-[20px] text-[#007BBB] uppercase tracking-wide">
+                      PEMEGANG SAHAM
+                    </th>
+                    <th className="py-4 px-6 font-extrabold text-[18px] sm:text-[20px] text-[#007BBB] uppercase tracking-wide">
+                      JUMLAH SAHAM
+                    </th>
+                    <th className="py-4 px-6 font-extrabold text-[18px] sm:text-[20px] text-[#007BBB] uppercase tracking-wide">
+                      PROSENTASE
+                    </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-[14px] sm:text-[15px] text-slate-700 font-medium">
-                  <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-6 font-semibold text-slate-900">PT Nusasatu Indonesia</td>
-                    <td className="py-3.5 px-6 text-right">456.250.000</td>
-                    <td className="py-3.5 px-6 text-right font-bold text-[#19375e]">33,18%</td>
+                <tbody className="text-[17px] sm:text-[19px] text-[#007BBB] font-normal">
+                  <tr className="border-b border-slate-100 hover:bg-slate-50/50">
+                    <td className="py-3.5 px-6">PT Kota Satu Indonesia</td>
+                    <td className="py-3.5 px-6">456.250.000</td>
+                    <td className="py-3.5 px-6">33,18%</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-6 font-semibold text-slate-900">Anton Stefian Dwi Kristanto</td>
-                    <td className="py-3.5 px-6 text-right">137.500.000</td>
-                    <td className="py-3.5 px-6 text-right font-bold text-[#19375e]">10,00%</td>
+                  <tr className="border-b border-slate-100 hover:bg-slate-50/50">
+                    <td className="py-3.5 px-6">Anton Stefian Dwi Kristanto</td>
+                    <td className="py-3.5 px-6">137.500.000</td>
+                    <td className="py-3.5 px-6">10,00%</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-6 font-semibold text-slate-900">Leo Agung Vito Wicaksana</td>
-                    <td className="py-3.5 px-6 text-right">161.048.400</td>
-                    <td className="py-3.5 px-6 text-right font-bold text-[#19375e]">11,71%</td>
+                  <tr className="border-b border-slate-100 hover:bg-slate-50/50">
+                    <td className="py-3.5 px-6">Leo Agung Vito Wicaksana</td>
+                    <td className="py-3.5 px-6">161.048.400</td>
+                    <td className="py-3.5 px-6">11,71%</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-6 font-semibold text-slate-900">Nyauw Farida AK</td>
-                    <td className="py-3.5 px-6 text-right">97.689.600</td>
-                    <td className="py-3.5 px-6 text-right font-bold text-[#19375e]">7,10%</td>
+                  <tr className="border-b border-slate-100 hover:bg-slate-50/50">
+                    <td className="py-3.5 px-6">Nyauw Farida AK</td>
+                    <td className="py-3.5 px-6">97.689.600</td>
+                    <td className="py-3.5 px-6">7,10%</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3.5 px-6 font-semibold text-slate-900">R.Y Kristian Hardianto</td>
-                    <td className="py-3.5 px-6 text-right">176.296.100</td>
-                    <td className="py-3.5 px-6 text-right font-bold text-[#19375e]">12,82%</td>
+                  <tr className="border-b border-slate-100 hover:bg-slate-50/50">
+                    <td className="py-3.5 px-6">R.Y Kristian Hardianto</td>
+                    <td className="py-3.5 px-6">176.296.100</td>
+                    <td className="py-3.5 px-6">12,82%</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 transition-colors bg-slate-50/50">
-                    <td className="py-3.5 px-6 font-semibold text-slate-900">Masyarakat &lt; 5%</td>
-                    <td className="py-3.5 px-6 text-right">137.500.000</td>
-                    <td className="py-3.5 px-6 text-right font-bold text-[#19375e]">25,18%</td>
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="py-3.5 px-6">Masyarakat &lt; 5%</td>
+                    <td className="py-3.5 px-6">137.500.000</td>
+                    <td className="py-3.5 px-6">25,18%</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
             {/* Button Lihat Grafik */}
-            <div className="text-center">
-              <button
-                onClick={() => setShowChartModal(true)}
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#19375e] hover:bg-[#122744] text-white text-[14px] font-bold uppercase tracking-wider rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
-              >
-                <svg className="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                </svg>
-                <span>Lihat Grafik</span>
-              </button>
-            </div>
+            <button
+              onClick={() => setShowChartModal(true)}
+              className="px-8 py-3 bg-[#22406F] hover:bg-[#183156] text-white text-[15px] font-bold uppercase tracking-wider rounded-[5px] transition-all shadow-md hover:shadow-lg cursor-pointer"
+            >
+              Lihat Grafik
+            </button>
           </div>
         </section>
 
         {/* Modal: Grafik Pemegang Saham */}
         {showChartModal && (
-          <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl animate-in fade-in zoom-in duration-200">
+          <div 
+            onClick={() => setShowChartModal(false)}
+            className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
+          >
+            <div 
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-xl max-w-2xl w-full p-6 relative shadow-2xl animate-in fade-in zoom-in duration-200"
+            >
               <button
                 onClick={() => setShowChartModal(false)}
                 className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors"
@@ -337,7 +411,7 @@ export default function ProfilPerusahaanPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <h3 className="text-xl font-bold text-[#19375e] mb-4 pr-10">
+              <h3 className="text-xl font-bold text-[#22406F] mb-4 pr-10">
                 Grafik Komposisi Pemegang Saham
               </h3>
               <div className="flex items-center justify-center py-2">
