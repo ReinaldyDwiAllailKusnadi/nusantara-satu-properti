@@ -12,7 +12,7 @@ export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(
     pathname === '/profil-perusahaan' 
       ? 'profil-perusahaan' 
-      : (pathname === '/perhotelan-allstay' ? 'unit-bisnis' : 'beranda')
+      : (pathname === '/perhotelan-allstay' || pathname === '/properti-amaya' ? 'unit-bisnis' : 'beranda')
   );
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -21,7 +21,7 @@ export default function Navbar() {
       setActiveMenu('profil-perusahaan');
       return;
     }
-    if (pathname === '/perhotelan-allstay') {
+    if (pathname === '/perhotelan-allstay' || pathname === '/properti-amaya') {
       setActiveMenu('unit-bisnis');
       return;
     }
@@ -173,7 +173,7 @@ export default function Navbar() {
                   Perhotelan
                 </Link>
                 <Link
-                  href="/#unit-bisnis"
+                  href="/properti-amaya"
                   onClick={() => {
                     setActiveMenu('unit-bisnis');
                     setUnitBisnisDropdown(false);
@@ -282,7 +282,7 @@ export default function Navbar() {
                   • Perhotelan
                 </Link>
                 <Link 
-                  href="/#unit-bisnis" 
+                  href="/properti-amaya" 
                   onClick={() => setMobileMenuOpen(false)} 
                   className="block py-1 hover:text-[#22406F]"
                 >
