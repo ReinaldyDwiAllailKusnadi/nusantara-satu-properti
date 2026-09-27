@@ -64,7 +64,7 @@ export default function ProfilPerusahaanPage() {
           <div className="max-w-[1240px] mx-auto px-6 sm:px-12 lg:px-16">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 items-start">
               
-              {/* Visi */}
+              {/* 1. Visi */}
               <div className="flex flex-col items-start space-y-4">
                 <div className="w-20 h-20 flex items-center justify-start">
                   <img src="/images/1.png" alt="Visi Icon" className="w-16 h-16 object-contain" />
@@ -77,26 +77,10 @@ export default function ProfilPerusahaanPage() {
                 </p>
               </div>
 
-              {/* Values 4P */}
+              {/* 2. Misi */}
               <div className="flex flex-col items-start space-y-4">
                 <div className="w-20 h-20 flex items-center justify-start">
-                  <img src="/images/2.png" alt="Values 4P Icon" className="w-16 h-16 object-contain" />
-                </div>
-                <h3 className="text-[26px] sm:text-[30px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
-                  Values 4P :
-                </h3>
-                <div className="text-[17px] sm:text-[18px] text-[#007BBB] space-y-1 font-normal leading-[32px]">
-                  <div>Profit</div>
-                  <div>Professional</div>
-                  <div>Prestige</div>
-                  <div>Public Oriented</div>
-                </div>
-              </div>
-
-              {/* Misi */}
-              <div className="flex flex-col items-start space-y-4">
-                <div className="w-20 h-20 flex items-center justify-start">
-                  <img src="/images/3.png" alt="Misi Icon" className="w-16 h-16 object-contain" />
+                  <img src="/images/2.png" alt="Misi Icon" className="w-16 h-16 object-contain" />
                 </div>
                 <h3 className="text-[26px] sm:text-[30px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
                   Misi :
@@ -106,6 +90,22 @@ export default function ProfilPerusahaanPage() {
                   <p>Automation, by digital system for professional business operation</p>
                   <p>Talent development, as continuous organization growth and best place to work</p>
                   <p>Unique concept, for competitive and profitable business</p>
+                </div>
+              </div>
+
+              {/* 3. Values 4P */}
+              <div className="flex flex-col items-start space-y-4">
+                <div className="w-20 h-20 flex items-center justify-start">
+                  <img src="/images/3.png" alt="Values 4P Icon" className="w-16 h-16 object-contain" />
+                </div>
+                <h3 className="text-[26px] sm:text-[30px] font-extrabold uppercase tracking-[2.1px] text-[#22406F]">
+                  Values 4P :
+                </h3>
+                <div className="text-[17px] sm:text-[18px] text-[#007BBB] space-y-1 font-normal leading-[32px]">
+                  <div>Profit</div>
+                  <div>Professional</div>
+                  <div>Prestige</div>
+                  <div>Public Oriented</div>
                 </div>
               </div>
 
