@@ -10,13 +10,19 @@ export default function Navbar() {
   const [mobileUnitBisnisOpen, setMobileUnitBisnisOpen] = useState(false);
   const [unitBisnisDropdown, setUnitBisnisDropdown] = useState(false);
   const [activeMenu, setActiveMenu] = useState(
-    pathname === '/profil-perusahaan' ? 'profil-perusahaan' : 'beranda'
+    pathname === '/profil-perusahaan' 
+      ? 'profil-perusahaan' 
+      : (pathname === '/perhotelan-allstay' ? 'unit-bisnis' : 'beranda')
   );
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     if (pathname === '/profil-perusahaan') {
       setActiveMenu('profil-perusahaan');
+      return;
+    }
+    if (pathname === '/perhotelan-allstay') {
+      setActiveMenu('unit-bisnis');
       return;
     }
 
@@ -157,7 +163,7 @@ export default function Navbar() {
                 }`}
               >
                 <Link
-                  href="/#unit-bisnis"
+                  href="/perhotelan-allstay"
                   onClick={() => {
                     setActiveMenu('unit-bisnis');
                     setUnitBisnisDropdown(false);
@@ -269,7 +275,7 @@ export default function Navbar() {
             {mobileUnitBisnisOpen && (
               <div className="pl-4 pt-1.5 pb-1 space-y-2 text-[13px] font-semibold text-[#007BBB]">
                 <Link 
-                  href="/#unit-bisnis" 
+                  href="/perhotelan-allstay" 
                   onClick={() => setMobileMenuOpen(false)} 
                   className="block py-1 hover:text-[#22406F]"
                 >
