@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileUnitBisnisOpen, setMobileUnitBisnisOpen] = useState(false);
   const [unitBisnisDropdown, setUnitBisnisDropdown] = useState(false);
   const [activeMenu, setActiveMenu] = useState(
     pathname === '/profil-perusahaan' ? 'profil-perusahaan' : 'beranda'
@@ -123,39 +124,59 @@ export default function Navbar() {
 
             {/* UNIT BISNIS ˅ */}
             <div 
-              className="relative"
+              className="relative h-full flex items-center"
               onMouseEnter={() => setUnitBisnisDropdown(true)}
               onMouseLeave={() => setUnitBisnisDropdown(false)}
             >
               <Link
                 href="/#unit-bisnis"
                 onClick={() => setActiveMenu('unit-bisnis')}
-                className={`nav-link-item gap-1.5 ${activeMenu === 'unit-bisnis' ? 'active' : ''}`}
+                className={`nav-link-item gap-1.5 ${
+                  activeMenu === 'unit-bisnis' || unitBisnisDropdown ? 'active' : ''
+                }`}
               >
                 <span>UNIT BISNIS</span>
-                <svg className="w-2.5 h-2.5 text-[#1c1c1c] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className={`w-3 h-3 text-[#1c1c1c] transition-transform duration-200 ${
+                    unitBisnisDropdown ? 'rotate-180 text-[#000077]' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                 </svg>
               </Link>
 
-              {unitBisnisDropdown && (
-                <div className="absolute top-full left-0 w-48 bg-white border border-slate-100 shadow-xl rounded-b-md py-2 z-50">
-                  <Link
-                    href="/#unit-bisnis"
-                    onClick={() => setUnitBisnisDropdown(false)}
-                    className="block px-4 py-2.5 text-[13px] font-bold text-[#1c1c1c] hover:bg-slate-50 hover:text-[#000077] transition-colors"
-                  >
-                    Perhotelan
-                  </Link>
-                  <Link
-                    href="/#unit-bisnis"
-                    onClick={() => setUnitBisnisDropdown(false)}
-                    className="block px-4 py-2.5 text-[13px] font-bold text-[#1c1c1c] hover:bg-slate-50 hover:text-[#000077] transition-colors"
-                  >
-                    Properti
-                  </Link>
-                </div>
-              )}
+              {/* Dropdown Menu (Exact match to kotasatuproperti.com) */}
+              <div 
+                className={`absolute top-full left-0 w-[240px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] rounded-none z-50 transition-all duration-200 ${
+                  unitBisnisDropdown 
+                    ? 'opacity-100 visible translate-y-0 pointer-events-auto' 
+                    : 'opacity-0 invisible translate-y-1 pointer-events-none'
+                }`}
+              >
+                <Link
+                  href="/#unit-bisnis"
+                  onClick={() => {
+                    setActiveMenu('unit-bisnis');
+                    setUnitBisnisDropdown(false);
+                  }}
+                  className="block px-6 py-3.5 text-[15px] font-bold text-[#1c1c1c] hover:text-[#000077] hover:bg-[#f8f9fa] border-b border-[#f0f0f0] transition-colors"
+                >
+                  Perhotelan
+                </Link>
+                <Link
+                  href="/#unit-bisnis"
+                  onClick={() => {
+                    setActiveMenu('unit-bisnis');
+                    setUnitBisnisDropdown(false);
+                  }}
+                  className="block px-6 py-3.5 text-[15px] font-bold text-[#1c1c1c] hover:text-[#000077] hover:bg-[#f8f9fa] transition-colors"
+                >
+                  Properti
+                </Link>
+              </div>
             </div>
 
             {/* INFORMASI INVESTOR */}
@@ -228,7 +249,43 @@ export default function Navbar() {
         <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-[13px] text-[#1c1c1c] tracking-[1.2px] uppercase shadow-lg">
           <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-1">Beranda</Link>
           <Link href="/profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">Profil Perusahaan</Link>
-          <Link href="/#unit-bisnis" onClick={() => setMobileMenuOpen(false)} className="block py-1">Unit Bisnis</Link>
+          
+          {/* Unit Bisnis with sub-items */}
+          <div>
+            <div 
+              onClick={() => setMobileUnitBisnisOpen(!mobileUnitBisnisOpen)}
+              className="flex items-center justify-between py-1 cursor-pointer select-none"
+            >
+              <span>Unit Bisnis</span>
+              <svg
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${mobileUnitBisnisOpen ? 'rotate-180 text-[#000077]' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            {mobileUnitBisnisOpen && (
+              <div className="pl-4 pt-1.5 pb-1 space-y-2 text-[13px] font-semibold text-[#007BBB]">
+                <Link 
+                  href="/#unit-bisnis" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="block py-1 hover:text-[#22406F]"
+                >
+                  • Perhotelan
+                </Link>
+                <Link 
+                  href="/#unit-bisnis" 
+                  onClick={() => setMobileMenuOpen(false)} 
+                  className="block py-1 hover:text-[#22406F]"
+                >
+                  • Properti
+                </Link>
+              </div>
+            )}
+          </div>
+
           <Link href="/#informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
           <Link href="/#tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
           <Link href="/#berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
