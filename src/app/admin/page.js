@@ -4,8 +4,17 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function AdminDashboardPage() {
-  const [activeTab, setActiveTab] = useState('berita'); // 'berita' | 'csr' | 'karir' | 'tataKelola' | 'investor'
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authToken, setAuthToken] = useState('');
+  const [loginForm, setLoginForm] = useState({ username: 'admin', password: '' });
+  const [loginError, setLoginError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  // CMS State
+  const [activeTab, setActiveTab] = useState('berita'); // 'berita' | 'csr' | 'karir' | 'tataKelola' | 'investor' | 'inquiries'
   const [data, setData] = useState({ berita: [], csr: [], karir: [], tataKelola: [], investor: [] });
+  const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   
@@ -15,6 +24,63 @@ export default function AdminDashboardPage() {
   const [editItem, setEditItem] = useState(null);
   const [formData, setFormData] = useState({});
   const [notification, setNotification] = useState(null);
+
+  // Check login on mount
+  useEffect(() => {
+    const savedToken = sessionStorage.getItem('ksp_admin_token');
+    if (savedToken) {
+      setAuthToken(savedToken);
+      setIsAuthenticated(true);
+      fetchData();
+      fetchInquiries();
+    } else {
+      setIsAuthenticated(false);
+      setLoading(false);
+    }
+  }, []);
+
+  const showToast = (message, type = 'success') => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification(null), 3500);
+  };
+
+  // Login handler
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+    setLoginLoading(true);
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginForm)
+      });
+      const json = await res.json();
+      if (json.success && json.token) {
+        sessionStorage.setItem('ksp_admin_token', json.token);
+        setAuthToken(json.token);
+        setIsAuthenticated(true);
+        fetchData();
+        fetchInquiries();
+        showToast('Login berhasil! Selamat datang di Panel Admin.');
+      } else {
+        setLoginError(json.message || 'Login gagal. Periksa kembali username dan password Anda.');
+      }
+    } catch (err) {
+      setLoginError('Koneksi ke server gagal. Silakan coba lagi.');
+    } finally {
+      setLoginLoading(false);
+    }
+  };
+
+  // Logout handler
+  const handleLogout = () => {
+    sessionStorage.removeItem('ksp_admin_token');
+    setAuthToken('');
+    setIsAuthenticated(false);
+    showToast('Anda telah berhasil keluar (Logged out).');
+  };
 
   // Fetch all CMS data
   const fetchData = async () => {
@@ -27,19 +93,62 @@ export default function AdminDashboardPage() {
       }
     } catch (err) {
       console.error(err);
-      showToast('Gagal memuat data!', 'error');
+      showToast('Gagal memuat data CMS!', 'error');
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // Fetch Inquiries
+  const fetchInquiries = async () => {
+    try {
+      const res = await fetch('/api/inquiries');
+      const json = await res.json();
+      if (json.success && json.data) {
+        setInquiries(json.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  const showToast = (message, type = 'success') => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3500);
+  // Update inquiry status
+  const handleUpdateInquiryStatus = async (id, newStatus) => {
+    try {
+      const res = await fetch('/api/inquiries', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
+        body: JSON.stringify({ id, status: newStatus })
+      });
+      const json = await res.json();
+      if (json.success) {
+        showToast(`Status pesan diubah ke ${newStatus}`);
+        fetchInquiries();
+      }
+    } catch (err) {
+      showToast('Gagal mengubah status', 'error');
+    }
+  };
+
+  // Delete inquiry
+  const handleDeleteInquiry = async (id) => {
+    if (!confirm('Hapus pesan pertanyaan ini?')) return;
+    try {
+      const res = await fetch(`/api/inquiries?id=${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      });
+      const json = await res.json();
+      if (json.success) {
+        showToast('Pesan berhasil dihapus');
+        fetchInquiries();
+      }
+    } catch (err) {
+      showToast('Gagal menghapus pesan', 'error');
+    }
   };
 
   // Open modal for adding
@@ -123,6 +232,9 @@ export default function AdminDashboardPage() {
     try {
       const res = await fetch(`/api/cms?type=${activeTab}&id=${id}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${authToken}`
+        }
       });
       const json = await res.json();
       if (json.success) {
@@ -151,17 +263,15 @@ export default function AdminDashboardPage() {
         delete payloadData.requirementsText;
       }
 
-      // Formatting for Tata Kelola sections
+      // Formatting for Tata Kelola sections array
       if (activeTab === 'tataKelola') {
-        if (!payloadData.sections) {
-          payloadData.sections = [
-            {
-              heading: formData.sectionHeading || formData.tabTitle,
-              content: formData.sectionContent || '',
-              duties: [],
-            },
-          ];
-        }
+        payloadData.sections = [
+          {
+            heading: formData.sectionHeading || 'Pedoman Organ Perseroan',
+            content: formData.sectionContent || '',
+            items: []
+          }
+        ];
         delete payloadData.sectionHeading;
         delete payloadData.sectionContent;
       }
@@ -169,31 +279,39 @@ export default function AdminDashboardPage() {
       if (modalMode === 'add') {
         const res = await fetch('/api/cms', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: activeTab, data: payloadData }),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({
+            type: activeTab,
+            data: payloadData
+          })
         });
         const json = await res.json();
         if (json.success) {
-          showToast('Item baru berhasil ditambahkan!');
+          showToast('Data baru berhasil ditambahkan!');
           setIsModalOpen(false);
           fetchData();
         } else {
-          showToast(json.error || 'Gagal menyimpan!', 'error');
+          showToast(json.error || 'Gagal menambah data!', 'error');
         }
       } else {
-        // Edit mode
         const res = await fetch('/api/cms', {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
           body: JSON.stringify({
             type: activeTab,
             id: editItem.id,
-            data: payloadData,
-          }),
+            data: payloadData
+          })
         });
         const json = await res.json();
         if (json.success) {
-          showToast('Perubahan berhasil disimpan!');
+          showToast('Perubahan data berhasil disimpan!');
           setIsModalOpen(false);
           fetchData();
         } else {
@@ -211,6 +329,98 @@ export default function AdminDashboardPage() {
     return text.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+  const filteredInquiries = inquiries.filter((inq) => {
+    const text = `${inq.name} ${inq.email} ${inq.phone} ${inq.interest} ${inq.message}`;
+    return text.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  const newInquiriesCount = inquiries.filter((i) => i.status === 'BARU').length;
+
+  // -------------------------------------------------------------
+  // RENDER: LOGIN SCREEN IF NOT AUTHENTICATED
+  // -------------------------------------------------------------
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#183054] to-[#22406F] flex items-center justify-center p-4 font-sans">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-10 max-w-md w-full border border-white/20">
+          <div className="text-center mb-8">
+            <img
+              src="/images/orig-logo.png"
+              alt="Kota Satu Properti"
+              className="h-10 mx-auto object-contain mb-4"
+            />
+            <h2 className="text-2xl font-black text-[#22406F] uppercase tracking-wide">
+              Admin CMS Panel
+            </h2>
+            <p className="text-xs text-slate-500 mt-1">
+              Portal Manajemen Konten Resmi PT Kota Satu Properti Tbk
+            </p>
+          </div>
+
+          {loginError && (
+            <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs font-semibold text-red-700 flex items-center gap-2">
+              <span className="text-base">⚠️</span>
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                Username
+              </label>
+              <input
+                type="text"
+                required
+                value={loginForm.username}
+                onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
+                placeholder="admin"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#007BBB] text-slate-900 font-medium"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase text-slate-600 mb-1.5">
+                Password
+              </label>
+              <input
+                type="password"
+                required
+                value={loginForm.password}
+                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                placeholder="Masukkan password admin"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#007BBB] text-slate-900 font-medium"
+              />
+            </div>
+
+            <div className="p-3 bg-blue-50/80 rounded-xl border border-blue-100 text-[11px] text-blue-900 space-y-1">
+              <p className="font-bold">🔐 Kredensial Default Sistem:</p>
+              <p>Username: <code className="bg-white px-1.5 py-0.5 rounded font-mono font-bold">admin</code></p>
+              <p>Password: <code className="bg-white px-1.5 py-0.5 rounded font-mono font-bold">AdminKotaSatu2026!</code></p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loginLoading}
+              className="w-full py-3.5 bg-[#007BBB] hover:bg-[#006296] text-white font-extrabold text-sm uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer disabled:opacity-50 mt-2"
+            >
+              {loginLoading ? 'Memverifikasi...' : 'Masuk ke Dashboard'}
+            </button>
+          </form>
+
+          <div className="text-center mt-6 pt-5 border-t border-slate-100">
+            <Link href="/" className="text-xs text-slate-500 hover:text-[#007BBB] font-bold">
+              &larr; Kembali ke Beranda Situs
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // RENDER: MAIN ADMIN DASHBOARD
+  // -------------------------------------------------------------
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
       {/* Toast Notification */}
@@ -234,7 +444,7 @@ export default function AdminDashboardPage() {
                 Admin CMS Panel
               </h1>
               <p className="text-[12px] text-slate-300">
-                PT Kota Satu Properti Tbk
+                PT Kota Satu Properti Tbk &bull; <span className="text-emerald-400 font-bold">Terkoneksi Aman</span>
               </p>
             </div>
           </div>
@@ -242,10 +452,18 @@ export default function AdminDashboardPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/"
+              target="_blank"
               className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-xs font-bold tracking-wider uppercase transition-colors"
             >
               Lihat Website ↗
             </Link>
+            <button
+              onClick={handleLogout}
+              className="px-3.5 py-2 bg-red-600/80 hover:bg-red-600 rounded-lg text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer"
+              title="Keluar dari Panel Admin"
+            >
+              Logout 🔒
+            </button>
           </div>
         </div>
       </header>
@@ -253,54 +471,69 @@ export default function AdminDashboardPage() {
       {/* Main Admin Content */}
       <main className="max-w-[1400px] mx-auto px-6 py-8 flex-1 w-full space-y-8">
         {/* Statistics Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#22406F] flex items-center justify-center text-2xl font-bold">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#22406F] flex items-center justify-center text-xl font-bold">
               📰
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Berita</p>
-              <h3 className="text-2xl font-extrabold text-[#22406F]">{data.berita?.length || 0}</h3>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Berita</p>
+              <h3 className="text-xl font-extrabold text-[#22406F]">{data.berita?.length || 0}</h3>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl font-bold">
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold">
               🤝
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Kegiatan CSR</p>
-              <h3 className="text-2xl font-extrabold text-[#22406F]">{data.csr?.length || 0}</h3>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">CSR</p>
+              <h3 className="text-xl font-extrabold text-[#22406F]">{data.csr?.length || 0}</h3>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-2xl font-bold">
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-xl font-bold">
               💼
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Lowongan Karir</p>
-              <h3 className="text-2xl font-extrabold text-[#22406F]">{data.karir?.length || 0}</h3>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Karir</p>
+              <h3 className="text-xl font-extrabold text-[#22406F]">{data.karir?.length || 0}</h3>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-2xl font-bold">
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl font-bold">
               🏛️
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tata Kelola</p>
-              <h3 className="text-2xl font-extrabold text-[#22406F]">{data.tataKelola?.length || 0}</h3>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Tata Kelola</p>
+              <h3 className="text-xl font-extrabold text-[#22406F]">{data.tataKelola?.length || 0}</h3>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-2xl font-bold">
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-xl font-bold">
               📈
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Info Investor</p>
-              <h3 className="text-2xl font-extrabold text-[#22406F]">{data.investor?.length || 0}</h3>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Investor</p>
+              <h3 className="text-xl font-extrabold text-[#22406F]">{data.investor?.length || 0}</h3>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200/80 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center text-xl font-bold relative">
+              📩
+              {newInquiriesCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-600 text-white rounded-full text-[9px] flex items-center justify-center font-bold">
+                  {newInquiriesCount}
+                </span>
+              )}
+            </div>
+            <div>
+              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Pesan Masuk</p>
+              <h3 className="text-xl font-extrabold text-[#22406F]">{inquiries.length}</h3>
             </div>
           </div>
         </div>
@@ -312,7 +545,7 @@ export default function AdminDashboardPage() {
             <div className="flex items-center gap-2 overflow-x-auto pb-1">
               <button
                 onClick={() => { setActiveTab('berita'); setSearchTerm(''); }}
-                className={`px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'berita'
                     ? 'bg-[#22406F] text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -323,7 +556,7 @@ export default function AdminDashboardPage() {
 
               <button
                 onClick={() => { setActiveTab('csr'); setSearchTerm(''); }}
-                className={`px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'csr'
                     ? 'bg-[#22406F] text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -334,7 +567,7 @@ export default function AdminDashboardPage() {
 
               <button
                 onClick={() => { setActiveTab('karir'); setSearchTerm(''); }}
-                className={`px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'karir'
                     ? 'bg-[#22406F] text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -345,7 +578,7 @@ export default function AdminDashboardPage() {
 
               <button
                 onClick={() => { setActiveTab('tataKelola'); setSearchTerm(''); }}
-                className={`px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'tataKelola'
                     ? 'bg-[#22406F] text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -356,13 +589,29 @@ export default function AdminDashboardPage() {
 
               <button
                 onClick={() => { setActiveTab('investor'); setSearchTerm(''); }}
-                className={`px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap ${
                   activeTab === 'investor'
                     ? 'bg-[#22406F] text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
                 📈 Investor ({data.investor?.length || 0})
+              </button>
+
+              <button
+                onClick={() => { setActiveTab('inquiries'); setSearchTerm(''); }}
+                className={`px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                  activeTab === 'inquiries'
+                    ? 'bg-[#22406F] text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <span>📩 Pesan Masuk</span>
+                {newInquiriesCount > 0 && (
+                  <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">
+                    {newInquiriesCount}
+                  </span>
+                )}
               </button>
             </div>
 
@@ -376,13 +625,15 @@ export default function AdminDashboardPage() {
                 className="px-4 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#22406F]/20 w-44 sm:w-56"
               />
 
-              <button
-                onClick={handleOpenAdd}
-                className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl transition-all shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
-              >
-                <span>+</span>
-                <span>Tambah Baru</span>
-              </button>
+              {activeTab !== 'inquiries' && (
+                <button
+                  onClick={handleOpenAdd}
+                  className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl transition-all shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+                >
+                  <span>+</span>
+                  <span>Tambah Baru</span>
+                </button>
+              )}
 
               {/* View Public Page Link */}
               <Link
@@ -395,6 +646,8 @@ export default function AdminDashboardPage() {
                     ? '/career'
                     : activeTab === 'investor'
                     ? '/informasi-investor'
+                    : activeTab === 'inquiries'
+                    ? '/#kontak'
                     : '/tata-kelola'
                 }
                 target="_blank"
@@ -406,132 +659,218 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          {/* Table List of Items */}
-          {loading ? (
-            <div className="py-20 text-center font-bold text-slate-500">
-              Memuat data tabel...
-            </div>
-          ) : currentItems.length === 0 ? (
-            <div className="py-16 text-center text-slate-400">
-              Tidak ada data ditemukan di kategori ini.
+          {/* TABLE FOR INQUIRIES TAB */}
+          {activeTab === 'inquiries' ? (
+            <div>
+              {filteredInquiries.length === 0 ? (
+                <div className="py-16 text-center text-slate-400">
+                  Belum ada pesan pertanyaan yang masuk dari formulir kontak.
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-xs font-extrabold uppercase text-slate-400 tracking-wider">
+                        <th className="py-3 px-4">Pengirim & Kontak</th>
+                        <th className="py-3 px-4">Unit Minat & Waktu</th>
+                        <th className="py-3 px-4">Isi Pesan</th>
+                        <th className="py-3 px-4 text-center">Status</th>
+                        <th className="py-3 px-4 text-right">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-sm">
+                      {filteredInquiries.map((inq) => (
+                        <tr key={inq.id} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="py-4 px-4">
+                            <div className="font-bold text-[#22406F] text-base">{inq.name}</div>
+                            <div className="text-xs text-slate-500 mt-0.5">{inq.email}</div>
+                            <div className="text-xs text-slate-500">{inq.phone}</div>
+                          </td>
+                          <td className="py-4 px-4 text-xs">
+                            <div className="font-bold text-slate-700">{inq.interest}</div>
+                            <div className="text-slate-400 mt-0.5">
+                              {new Date(inq.timestamp).toLocaleString('id-ID')}
+                            </div>
+                          </td>
+                          <td className="py-4 px-4 text-xs text-slate-700 max-w-xs">
+                            <p className="line-clamp-3 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                              {inq.message}
+                            </p>
+                          </td>
+                          <td className="py-4 px-4 text-center">
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-bold ${
+                                inq.status === 'BARU'
+                                  ? 'bg-rose-100 text-rose-700'
+                                  : inq.status === 'DIHUBUNGI'
+                                  ? 'bg-amber-100 text-amber-800'
+                                  : 'bg-emerald-100 text-emerald-800'
+                              }`}
+                            >
+                              {inq.status}
+                            </span>
+                          </td>
+                          <td className="py-4 px-4 text-right">
+                            <div className="flex items-center justify-end gap-1.5">
+                              {inq.phone && (
+                                <a
+                                  href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, '')}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-2.5 py-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs rounded-lg transition-colors"
+                                  title="Balas via WhatsApp"
+                                >
+                                  WA
+                                </a>
+                              )}
+                              <button
+                                onClick={() => handleUpdateInquiryStatus(inq.id, inq.status === 'BARU' ? 'DIHUBUNGI' : 'SELESAI')}
+                                className="px-2.5 py-1 bg-blue-50 text-[#007BBB] hover:bg-blue-100 font-bold text-xs rounded-lg transition-colors cursor-pointer"
+                              >
+                                {inq.status === 'BARU' ? 'Tandai Dihubungi' : 'Selesai'}
+                              </button>
+                              <button
+                                onClick={() => handleDeleteInquiry(inq.id)}
+                                className="px-2 py-1 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg text-xs font-bold transition-colors cursor-pointer"
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-200 text-xs font-extrabold uppercase text-slate-400 tracking-wider">
-                    <th className="py-3 px-4">Item / Judul</th>
-                    <th className="py-3 px-4">Info Tambahan</th>
-                    <th className="py-3 px-4 text-center">Status / Tag</th>
-                    <th className="py-3 px-4 text-right">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 text-sm">
-                  {currentItems.map((item) => (
-                    <tr key={item.id} className="hover:bg-slate-50/70 transition-colors">
-                      {/* Main Title & Image */}
-                      <td className="py-4 px-4 max-w-md">
-                        <div className="flex items-center gap-3.5">
-                          {item.image && (
-                            <img
-                              src={item.image}
-                              alt=""
-                              className="w-12 h-12 object-cover rounded-lg flex-shrink-0 bg-slate-100"
-                            />
-                          )}
-                          <div>
-                            <h4 className="font-bold text-[#22406F] line-clamp-1">
-                              {item.title || item.tabTitle || item.documentTitle}
-                            </h4>
-                            <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                              {item.excerpt || item.summary || item.description || item.pdfUrl}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
+            /* REGULAR CMS ITEMS TABLE */
+            <div>
+              {loading ? (
+                <div className="py-20 text-center font-bold text-slate-500">
+                  Memuat data tabel...
+                </div>
+              ) : currentItems.length === 0 ? (
+                <div className="py-16 text-center text-slate-400">
+                  Tidak ada data ditemukan di kategori ini.
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-xs font-extrabold uppercase text-slate-400 tracking-wider">
+                        <th className="py-3 px-4">Item / Judul</th>
+                        <th className="py-3 px-4">Info Tambahan</th>
+                        <th className="py-3 px-4 text-center">Status / Tag</th>
+                        <th className="py-3 px-4 text-right">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-sm">
+                      {currentItems.map((item) => (
+                        <tr key={item.id} className="hover:bg-slate-50/70 transition-colors">
+                          {/* Main Title & Image */}
+                          <td className="py-4 px-4 max-w-md">
+                            <div className="flex items-center gap-3.5">
+                              {item.image && (
+                                <img
+                                  src={item.image}
+                                  alt=""
+                                  onError={(e) => { e.currentTarget.src = '/images/orig-logo.png'; }}
+                                  className="w-12 h-12 object-cover rounded-lg flex-shrink-0 bg-slate-100"
+                                />
+                              )}
+                              <div>
+                                <h4 className="font-bold text-[#22406F] line-clamp-1">
+                                  {item.title || item.tabTitle || item.documentTitle}
+                                </h4>
+                                <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
+                                  {item.excerpt || item.summary || item.description || item.downloadUrl || item.pdfUrl}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
 
-                      {/* Extra info */}
-                      <td className="py-4 px-4 text-xs text-slate-500">
-                        {item.date && <div>📅 {item.date}</div>}
-                        {item.location && <div>📍 {item.location}</div>}
-                        {item.postedDate && <div>📅 {item.postedDate}</div>}
-                        {item.documentTitle && <div>📄 {item.documentTitle}</div>}
-                        {item.category && <div className="font-semibold text-slate-700">📁 {item.category}</div>}
-                      </td>
+                          {/* Extra info */}
+                          <td className="py-4 px-4 text-xs text-slate-500">
+                            {item.date && <div>📅 {item.date}</div>}
+                            {item.location && <div>📍 {item.location}</div>}
+                            {item.postedDate && <div>📅 {item.postedDate}</div>}
+                            {item.documentTitle && <div>📄 {item.documentTitle}</div>}
+                            {item.category && <div className="font-semibold text-slate-700">📁 {item.category}</div>}
+                          </td>
 
-                      {/* Status / Tag */}
-                      <td className="py-4 px-4 text-center">
-                        {item.tag && (
-                          <span className="px-2.5 py-1 bg-blue-50 text-[#007BBB] font-bold text-xs rounded-full">
-                            {item.tag}
-                          </span>
-                        )}
-                        {item.status && (
-                          <span
-                            className={`px-2.5 py-1 font-bold text-xs rounded-full ${
-                              item.status === 'Open'
-                                ? 'bg-emerald-50 text-emerald-700'
-                                : 'bg-slate-100 text-slate-500'
-                            }`}
-                          >
-                            {item.status}
-                          </span>
-                        )}
-                        {activeTab === 'tataKelola' && (
-                          <span className="px-2.5 py-1 bg-purple-50 text-purple-700 font-bold text-xs rounded-full">
-                            Charter
-                          </span>
-                        )}
-                        {activeTab === 'investor' && (
-                          <span className="px-2.5 py-1 bg-cyan-50 text-cyan-800 font-bold text-xs rounded-full">
-                            {item.category || 'Dokumen'}
-                          </span>
-                        )}
-                      </td>
+                          {/* Status / Tag */}
+                          <td className="py-4 px-4 text-center">
+                            {item.tag && (
+                              <span className="px-2.5 py-1 bg-blue-50 text-[#007BBB] font-bold text-xs rounded-full">
+                                {item.tag}
+                              </span>
+                            )}
+                            {item.status && (
+                              <span
+                                className={`px-2.5 py-1 font-bold text-xs rounded-full ${
+                                  item.status === 'Open'
+                                    ? 'bg-emerald-50 text-emerald-700'
+                                    : 'bg-slate-100 text-slate-500'
+                                }`}
+                              >
+                                {item.status}
+                              </span>
+                            )}
+                            {activeTab === 'tataKelola' && (
+                              <span className="px-2.5 py-1 bg-purple-50 text-purple-700 font-bold text-xs rounded-full">
+                                Charter
+                              </span>
+                            )}
+                            {activeTab === 'investor' && (
+                              <span className="px-2.5 py-1 bg-cyan-50 text-cyan-800 font-bold text-xs rounded-full">
+                                {item.category || 'Dokumen'}
+                              </span>
+                            )}
+                          </td>
 
-                      {/* Action Buttons (Edit / Delete) */}
-                      <td className="py-4 px-4 text-right">
-                        <div className="flex items-center justify-end gap-2">
-                          <button
-                            onClick={() => handleOpenEdit(item)}
-                            className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-lg transition-colors cursor-pointer"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleDelete(item.id)}
-                            className="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs rounded-lg transition-colors cursor-pointer"
-                          >
-                            Hapus
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                          {/* Action Buttons (Edit / Delete) */}
+                          <td className="py-4 px-4 text-right">
+                            <div className="flex items-center justify-end gap-2">
+                              <button
+                                onClick={() => handleOpenEdit(item)}
+                                className="px-3 py-1.5 bg-slate-100 hover:bg-[#22406F] hover:text-white rounded-lg text-xs font-bold text-slate-700 transition-colors cursor-pointer"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => handleDelete(item.id)}
+                                className="px-3 py-1.5 bg-red-50 hover:bg-red-600 hover:text-white rounded-lg text-xs font-bold text-red-600 transition-colors cursor-pointer"
+                              >
+                                Hapus
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           )}
         </div>
       </main>
 
-      {/* Modal Form Add / Edit */}
+      {/* ========================================================= */}
+      {/* MODAL: ADD / EDIT DIALOG                                  */}
+      {/* ========================================================= */}
       {isModalOpen && (
-        <div 
-          onClick={() => setIsModalOpen(false)}
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer"
-        >
-          <div 
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto relative shadow-2xl animate-in fade-in zoom-in duration-200 cursor-default"
-          >
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
-              <h3 className="text-xl font-extrabold text-[#22406F]">
-                {modalMode === 'add' ? 'Tambah Data Baru' : 'Edit Data'} ({activeTab.toUpperCase()})
+              <h3 className="text-lg font-extrabold text-[#22406F] uppercase tracking-wide">
+                {modalMode === 'add' ? `Tambah Data Baru (${activeTab})` : `Edit Data (${activeTab})`}
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-slate-400 hover:text-slate-700 p-1 rounded-full text-lg"
+                className="text-slate-400 hover:text-slate-600 p-1 font-bold text-lg cursor-pointer"
               >
                 ✕
               </button>
@@ -647,7 +986,7 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Deskripsi Kegiatan CSR</label>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Deskripsi Kegiatan</label>
                     <textarea
                       rows={4}
                       required
@@ -663,25 +1002,23 @@ export default function AdminDashboardPage() {
               {activeTab === 'karir' && (
                 <>
                   <div>
-                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Posisi Lowongan</label>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Posisi / Judul Lowongan</label>
                     <input
                       type="text"
                       required
                       value={formData.title || ''}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      placeholder="e.g. Project Architect"
                       className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Divisi / Unit</label>
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Divisi</label>
                       <input
                         type="text"
                         value={formData.division || ''}
                         onChange={(e) => setFormData({ ...formData, division: e.target.value })}
-                        placeholder="Property / Hospitality"
                         className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
                       />
                     </div>
@@ -691,7 +1028,6 @@ export default function AdminDashboardPage() {
                         type="text"
                         value={formData.location || ''}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        placeholder="Semarang"
                         className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
                       />
                     </div>
@@ -699,41 +1035,46 @@ export default function AdminDashboardPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Tipe Pekerjaan</label>
-                      <input
-                        type="text"
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Tipe Kerja</label>
+                      <select
                         value={formData.type || 'Full Time'}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
-                      />
+                        className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20 bg-white"
+                      >
+                        <option value="Full Time">Full Time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
+                      </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Status Lowongan</label>
+                      <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Status Rekrutmen</label>
                       <select
                         value={formData.status || 'Open'}
                         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                         className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20 bg-white"
                       >
-                        <option value="Open">Open (Terbuka)</option>
+                        <option value="Open">Open (Menerima Pelamar)</option>
                         <option value="Closed">Closed (Ditutup)</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Deskripsi Pekerjaan</label>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Deskripsi Singkat Pekerjaan</label>
                     <textarea
-                      rows={3}
+                      rows={2}
                       value={formData.description || ''}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20 leading-relaxed"
+                      className="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#22406F]/20"
                     ></textarea>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">Kualifikasi (1 baris per poin)</label>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-1">
+                      Kualifikasi Persyaratan (Pisahkan tiap poin dengan baris baru / Enter)
+                    </label>
                     <textarea
-                      rows={3}
+                      rows={4}
                       value={formData.requirementsText || ''}
                       onChange={(e) => setFormData({ ...formData, requirementsText: e.target.value })}
                       placeholder="Pendidikan minimal S1&#10;Pengalaman 2 tahun"

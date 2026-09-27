@@ -3,6 +3,12 @@ import fs from 'fs';
 import path from 'path';
 
 const dataFilePath = path.join(process.cwd(), 'src', 'data', 'cms.json');
+const SECRET_TOKEN = process.env.ADMIN_SECRET_TOKEN || 'ksp_sec_auth_token_98741';
+
+function isAuthorized(request) {
+  const auth = request.headers.get('authorization');
+  return auth === `Bearer ${SECRET_TOKEN}`;
+}
 
 function readData() {
   try {
@@ -42,6 +48,10 @@ export async function GET(request) {
 
 // POST /api/cms (Create new item)
 export async function POST(request) {
+  if (!isAuthorized(request)) {
+    return NextResponse.json({ success: false, error: 'Unauthorized: Akses ditolak. Harap login sebagai admin.' }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { type, data } = body;
@@ -72,6 +82,10 @@ export async function POST(request) {
 
 // PUT /api/cms (Update existing item)
 export async function PUT(request) {
+  if (!isAuthorized(request)) {
+    return NextResponse.json({ success: false, error: 'Unauthorized: Akses ditolak. Harap login sebagai admin.' }, { status: 401 });
+  }
+
   try {
     const body = await request.json();
     const { type, id, data } = body;
@@ -101,6 +115,10 @@ export async function PUT(request) {
 
 // DELETE /api/cms?type=berita&id=123 (or via body)
 export async function DELETE(request) {
+  if (!isAuthorized(request)) {
+    return NextResponse.json({ success: false, error: 'Unauthorized: Akses ditolak. Harap login sebagai admin.' }, { status: 401 });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     let type = searchParams.get('type');

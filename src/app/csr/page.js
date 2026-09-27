@@ -75,17 +75,20 @@ export default function CSRPage() {
                 {csrList.map((item) => (
                   <div
                     key={item.id}
-                    className="flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 group cursor-pointer"
-                    onClick={() => setActiveItem(item)}
+                    className="flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 group"
                   >
                     {/* Thumbnail Left */}
-                    <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden bg-slate-100 relative flex-shrink-0">
+                    <Link href={`/csr/${item.id}`} className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden bg-slate-100 relative flex-shrink-0 block">
                       <img
                         src={item.image || '/images/Web_Award_KSP.jpg'}
                         alt={item.title}
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = '/images/Web_Award_1_KSP.jpg';
+                        }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                    </div>
+                    </Link>
 
                     {/* Content Right */}
                     <div className="sm:w-3/5 p-6 flex flex-col justify-between space-y-4">
@@ -95,16 +98,29 @@ export default function CSRPage() {
                           {item.location && <span className="text-[#007BBB]">{item.location}</span>}
                         </div>
                         <h3 className="text-[17px] sm:text-[18px] font-extrabold text-[#22406F] leading-snug group-hover:text-[#007BBB] transition-colors line-clamp-3">
-                          {item.title}
+                          <Link href={`/csr/${item.id}`}>
+                            {item.title}
+                          </Link>
                         </h3>
                         <p className="text-[14px] text-slate-600 leading-relaxed text-justify line-clamp-3">
                           {item.summary}
                         </p>
                       </div>
 
-                      <div className="pt-2 text-[13px] font-bold text-[#007BBB] group-hover:text-[#22406F] transition-colors flex items-center gap-1">
-                        <span>Lihat Selengkapnya</span>
-                        <span>&rsaquo;</span>
+                      <div className="pt-2 flex items-center justify-between">
+                        <Link
+                          href={`/csr/${item.id}`}
+                          className="text-[13px] font-bold text-[#007BBB] hover:text-[#22406F] transition-colors flex items-center gap-1"
+                        >
+                          <span>Halaman Lengkap</span>
+                          <span>&rsaquo;</span>
+                        </Link>
+                        <button
+                          onClick={() => setActiveItem(item)}
+                          className="text-xs font-semibold text-slate-400 hover:text-slate-700 underline cursor-pointer"
+                        >
+                          Preview
+                        </button>
                       </div>
                     </div>
                   </div>

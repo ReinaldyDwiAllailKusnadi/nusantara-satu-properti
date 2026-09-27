@@ -1,0 +1,22 @@
+[
+  {
+    "id": "INQ-1727431200000",
+    "name": "Bambang Hendrawan",
+    "email": "bambang.h@gmail.com",
+    "phone": "+6281234567890",
+    "interest": "The Amaya Home Resort",
+    "message": "Halo, saya tertarik dengan informasi harga dan ketersediaan klaster Foresta di The Amaya. Apakah bisa dikirimkan e-brochure lengkap?",
+    "timestamp": "2026-09-27T08:30:00.000Z",
+    "status": "BARU"
+  },
+  {
+    "id": "INQ-1727420400000",
+    "name": "Siti Nurhaliza",
+    "email": "siti.nur@perusahaan.co.id",
+    "phone": "+6281898765432",
+    "interest": "Allstay Hotel Semarang",
+    "message": "Selamat siang, kami dari tim corporate ingin menanyakan paket corporate gathering dan sewa ruang meeting di Allstay Hotel untuk 50 peserta.",
+    "timestamp": "2026-09-26T14:15:00.000Z",
+    "status": "DIHUBUNGI"
+  }
+]

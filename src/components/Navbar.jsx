@@ -20,8 +20,60 @@ export default function Navbar() {
     return 'beranda';
   };
 
+  const [lang, setLang] = useState('id');
   const [activeMenu, setActiveMenu] = useState(getActiveMenu(pathname));
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const savedLang = typeof window !== 'undefined' ? localStorage.getItem('ksp_lang') : 'id';
+    if (savedLang) setLang(savedLang);
+  }, []);
+
+  const handleLangChange = (newLang) => {
+    setLang(newLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ksp_lang', newLang);
+      window.dispatchEvent(new Event('ksp_lang_changed'));
+    }
+  };
+
+  const labels = {
+    id: {
+      beranda: 'BERANDA',
+      profil: 'PROFIL PERUSAHAAN',
+      unitBisnis: 'UNIT BISNIS',
+      perhotelan: 'Perhotelan',
+      properti: 'Properti',
+      investor: 'INFORMASI INVESTOR',
+      tataKelola: 'TATA KELOLA',
+      berita: 'BERITA',
+      csr: 'CSR',
+      karir: 'KARIR',
+    },
+    en: {
+      beranda: 'HOME',
+      profil: 'ABOUT US',
+      unitBisnis: 'BUSINESS UNITS',
+      perhotelan: 'Hospitality',
+      properti: 'Property',
+      investor: 'INVESTOR RELATIONS',
+      tataKelola: 'GOVERNANCE',
+      berita: 'NEWS',
+      csr: 'CSR',
+      karir: 'CAREER',
+    }
+  }[lang] || {
+    beranda: 'BERANDA',
+    profil: 'PROFIL PERUSAHAAN',
+    unitBisnis: 'UNIT BISNIS',
+    perhotelan: 'Perhotelan',
+    properti: 'Properti',
+    investor: 'INFORMASI INVESTOR',
+    tataKelola: 'TATA KELOLA',
+    berita: 'BERITA',
+    csr: 'CSR',
+    karir: 'KARIR',
+  };
 
   useEffect(() => {
     if (['/profil-perusahaan', '/perhotelan-allstay', '/properti-amaya', '/informasi-investor', '/tata-kelola', '/berita', '/csr', '/career', '/karir'].includes(pathname)) {
@@ -70,7 +122,10 @@ export default function Navbar() {
             {/* Indonesian Flag */}
             <button 
               title="Bahasa Indonesia"
-              className="w-[22px] h-[15px] border border-white/20 overflow-hidden flex flex-col hover:opacity-85 transition-opacity cursor-pointer"
+              onClick={() => handleLangChange('id')}
+              className={`w-[22px] h-[15px] border overflow-hidden flex flex-col transition-all cursor-pointer ${
+                lang === 'id' ? 'ring-2 ring-white border-white scale-110 shadow-sm' : 'border-white/30 opacity-70 hover:opacity-100'
+              }`}
             >
               <div className="h-1/2 bg-[#CE1126] w-full"></div>
               <div className="h-1/2 bg-white w-full"></div>
@@ -78,7 +133,10 @@ export default function Navbar() {
             {/* US Flag */}
             <button 
               title="English"
-              className="w-[22px] h-[15px] border border-white/20 overflow-hidden relative bg-[#B22234] hover:opacity-85 transition-opacity cursor-pointer"
+              onClick={() => handleLangChange('en')}
+              className={`w-[22px] h-[15px] border overflow-hidden relative bg-[#B22234] transition-all cursor-pointer ${
+                lang === 'en' ? 'ring-2 ring-white border-white scale-110 shadow-sm' : 'border-white/30 opacity-70 hover:opacity-100'
+              }`}
             >
               <div className="absolute top-0 left-0 w-[10px] h-[8px] bg-[#3C3B6E] flex items-center justify-center">
                 <span className="text-[6px] text-white leading-none font-bold">&#9733;</span>
@@ -119,7 +177,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('beranda')}
               className={`nav-link-item ${activeMenu === 'beranda' ? 'active' : ''}`}
             >
-              BERANDA
+              {labels.beranda}
             </Link>
 
             {/* PROFIL PERUSAHAAN */}
@@ -128,7 +186,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('profil-perusahaan')}
               className={`nav-link-item ${activeMenu === 'profil-perusahaan' ? 'active' : ''}`}
             >
-              PROFIL PERUSAHAAN
+              {labels.profil}
             </Link>
 
             {/* UNIT BISNIS ˅ */}
@@ -144,7 +202,7 @@ export default function Navbar() {
                   activeMenu === 'unit-bisnis' || unitBisnisDropdown ? 'active' : ''
                 }`}
               >
-                <span>UNIT BISNIS</span>
+                <span>{labels.unitBisnis}</span>
                 <svg
                   className={`w-3 h-3 text-[#1c1c1c] transition-transform duration-200 ${
                     unitBisnisDropdown ? 'rotate-180 text-[#000077]' : ''
@@ -173,7 +231,7 @@ export default function Navbar() {
                   }}
                   className="block px-6 py-3.5 text-[15px] font-bold text-[#1c1c1c] hover:text-[#000077] hover:bg-[#f8f9fa] border-b border-[#f0f0f0] transition-colors"
                 >
-                  Perhotelan
+                  {labels.perhotelan}
                 </Link>
                 <Link
                   href="/properti-amaya"
@@ -183,7 +241,7 @@ export default function Navbar() {
                   }}
                   className="block px-6 py-3.5 text-[15px] font-bold text-[#1c1c1c] hover:text-[#000077] hover:bg-[#f8f9fa] transition-colors"
                 >
-                  Properti
+                  {labels.properti}
                 </Link>
               </div>
             </div>
@@ -194,7 +252,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('informasi-investor')}
               className={`nav-link-item ${activeMenu === 'informasi-investor' ? 'active' : ''}`}
             >
-              INFORMASI INVESTOR
+              {labels.investor}
             </Link>
 
             {/* TATA KELOLA */}
@@ -203,7 +261,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('tata-kelola')}
               className={`nav-link-item ${activeMenu === 'tata-kelola' ? 'active' : ''}`}
             >
-              TATA KELOLA
+              {labels.tataKelola}
             </Link>
 
             {/* BERITA */}
@@ -212,7 +270,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('berita')}
               className={`nav-link-item ${activeMenu === 'berita' ? 'active' : ''}`}
             >
-              BERITA
+              {labels.berita}
             </Link>
 
             {/* CSR */}
@@ -221,7 +279,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('csr')}
               className={`nav-link-item ${activeMenu === 'csr' ? 'active' : ''}`}
             >
-              CSR
+              {labels.csr}
             </Link>
 
             {/* KARIR */}
@@ -230,7 +288,7 @@ export default function Navbar() {
               onClick={() => setActiveMenu('karir')}
               className={`nav-link-item ${activeMenu === 'karir' ? 'active' : ''}`}
             >
-              KARIR
+              {labels.karir}
             </Link>
           </nav>
 
@@ -256,8 +314,8 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 px-6 py-4 space-y-3 font-bold text-[13px] text-[#1c1c1c] tracking-[1.2px] uppercase shadow-lg">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-1">Beranda</Link>
-          <Link href="/profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">Profil Perusahaan</Link>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.beranda}</Link>
+          <Link href="/profil-perusahaan" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.profil}</Link>
           
           {/* Unit Bisnis with sub-items */}
           <div>
@@ -265,7 +323,7 @@ export default function Navbar() {
               onClick={() => setMobileUnitBisnisOpen(!mobileUnitBisnisOpen)}
               className="flex items-center justify-between py-1 cursor-pointer select-none"
             >
-              <span>Unit Bisnis</span>
+              <span>{labels.unitBisnis}</span>
               <svg
                 className={`w-3.5 h-3.5 transition-transform duration-200 ${mobileUnitBisnisOpen ? 'rotate-180 text-[#000077]' : ''}`}
                 fill="none"
@@ -282,24 +340,24 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)} 
                   className="block py-1 hover:text-[#22406F]"
                 >
-                  • Perhotelan
+                  • {labels.perhotelan}
                 </Link>
                 <Link 
                   href="/properti-amaya" 
                   onClick={() => setMobileMenuOpen(false)} 
                   className="block py-1 hover:text-[#22406F]"
                 >
-                  • Properti
+                  • {labels.properti}
                 </Link>
               </div>
             )}
           </div>
 
-          <Link href="/informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">Informasi Investor</Link>
-          <Link href="/tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">Tata Kelola</Link>
-          <Link href="/berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">Berita</Link>
-          <Link href="/csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">CSR</Link>
-          <Link href="/career" onClick={() => setMobileMenuOpen(false)} className="block py-1">Karir</Link>
+          <Link href="/informasi-investor" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.investor}</Link>
+          <Link href="/tata-kelola" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.tataKelola}</Link>
+          <Link href="/berita" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.berita}</Link>
+          <Link href="/csr" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.csr}</Link>
+          <Link href="/career" onClick={() => setMobileMenuOpen(false)} className="block py-1">{labels.karir}</Link>
         </div>
       )}
     </header>

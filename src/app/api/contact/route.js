@@ -22,8 +22,11 @@ export async function POST(request) {
       );
     }
 
-    // In a production backend, this would save to database (Prisma / Supabase / MongoDB)
-    // and trigger an email notification (Resend / SendGrid / Nodemailer)
+    // Save to src/data/inquiries.json
+    const fs = await import('fs');
+    const path = await import('path');
+    const inqFilePath = path.join(process.cwd(), 'src', 'data', 'inquiries.json');
+
     const inquiryRecord = {
       id: 'INQ-' + Date.now(),
       name: name.trim(),
@@ -32,8 +35,19 @@ export async function POST(request) {
       interest: interest || 'The Amaya Home Resort',
       message: message.trim(),
       timestamp: new Date().toISOString(),
-      status: 'RECEIVED'
+      status: 'BARU'
     };
+
+    try {
+      let existing = [];
+      if (fs.existsSync(inqFilePath)) {
+        existing = JSON.parse(fs.readFileSync(inqFilePath, 'utf8'));
+      }
+      existing.unshift(inquiryRecord);
+      fs.writeFileSync(inqFilePath, JSON.stringify(existing, null, 2), 'utf8');
+    } catch (fsErr) {
+      console.error('Failed to write inquiry:', fsErr);
+    }
 
     console.log('[Inquiry Received]:', inquiryRecord);
 

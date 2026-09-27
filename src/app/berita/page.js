@@ -111,16 +111,20 @@ export default function BeritaPage() {
                     className="flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-100/90 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 group"
                   >
                     {/* Thumbnail Image with Tag */}
-                    <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                    <Link href={`/berita/${item.id}`} className="relative aspect-[16/10] overflow-hidden bg-slate-100 block">
                       <img
                         src={item.image || '/images/Web_Award_1_KSP.jpg'}
                         alt={item.title}
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = '/images/ahs-thumb.jpg';
+                        }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-3 left-3 bg-[#22406F] text-white text-[11px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider shadow-sm">
                         {item.tag || 'NEWS'}
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Content */}
                     <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
@@ -129,7 +133,9 @@ export default function BeritaPage() {
                           {item.date}
                         </div>
                         <h2 className="text-[18px] sm:text-[19px] font-extrabold text-[#22406F] leading-snug group-hover:text-[#007BBB] transition-colors line-clamp-3">
-                          {item.title}
+                          <Link href={`/berita/${item.id}`}>
+                            {item.title}
+                          </Link>
                         </h2>
                         <p className="text-[14px] text-slate-600 leading-relaxed text-justify line-clamp-3">
                           {item.excerpt}
@@ -137,13 +143,22 @@ export default function BeritaPage() {
                       </div>
 
                       {/* Read More Action */}
-                      <button
-                        onClick={() => setActiveArticle(item)}
-                        className="inline-flex items-center text-[14px] font-bold text-[#007BBB] hover:text-[#22406F] uppercase tracking-wide group/btn pt-2 cursor-pointer"
-                      >
-                        <span>READ MORE</span>
-                        <span className="ml-1 text-base group-hover/btn:translate-x-1 transition-transform">»</span>
-                      </button>
+                      <div className="flex items-center justify-between pt-2">
+                        <Link
+                          href={`/berita/${item.id}`}
+                          className="inline-flex items-center text-[14px] font-bold text-[#007BBB] hover:text-[#22406F] uppercase tracking-wide group/btn"
+                        >
+                          <span>READ MORE</span>
+                          <span className="ml-1 text-base group-hover/btn:translate-x-1 transition-transform">»</span>
+                        </Link>
+
+                        <button
+                          onClick={() => setActiveArticle(item)}
+                          className="text-xs font-semibold text-slate-400 hover:text-slate-700 underline cursor-pointer"
+                        >
+                          Preview Cepat
+                        </button>
+                      </div>
                     </div>
                   </article>
                 ))}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -13,12 +13,16 @@ const TABS = [
   'Keterbukaan Informasi Lainnya'
 ];
 
+const ITEMS_PER_PAGE = 12;
+
 export default function InformasiInvestorPage() {
   const [activeTab, setActiveTab] = useState('Prospektus');
   const [investorData, setInvestorData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState('Semua');
+  const [currentPage, setCurrentPage] = useState(1);
+  const contentTopRef = useRef(null);
 
   useEffect(() => {
     fetch('/api/cms?type=investor')
@@ -32,6 +36,11 @@ export default function InformasiInvestorPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  // Reset page whenever filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab, searchQuery, selectedYear]);
+
   // Filter items based on activeTab, searchQuery, and selectedYear
   const filteredItems = useMemo(() => {
     return investorData.filter((item) => {
@@ -43,6 +52,22 @@ export default function InformasiInvestorPage() {
       return matchTab && matchSearch && matchYear;
     });
   }, [investorData, activeTab, searchQuery, selectedYear]);
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+  const paginatedItems = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredItems.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredItems, currentPage]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+      if (contentTopRef.current) {
+        contentTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
 
   // Extract available years for the active tab for easy filtering
   const availableYears = useMemo(() => {
@@ -63,7 +88,7 @@ export default function InformasiInvestorPage() {
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header Title Section */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-10" ref={contentTopRef}>
             <h1 className="text-[32px] sm:text-[45px] font-extrabold uppercase tracking-[2.1px] text-[#000077] font-sans">
               Informasi Investor
             </h1>
@@ -141,6 +166,20 @@ export default function InformasiInvestorPage() {
             )}
           </div>
 
+          {/* Showing Items Counter */}
+          {!loading && filteredItems.length > 0 && (
+            <div className="flex items-center justify-between mb-6 text-xs sm:text-sm text-slate-500 font-medium">
+              <div>
+                Menampilkan <span className="font-bold text-[#22406F]">{(currentPage - 1) * ITEMS_PER_PAGE + 1} - {Math.min(currentPage * ITEMS_PER_PAGE, filteredItems.length)}</span> dari <span className="font-bold text-[#22406F]">{filteredItems.length}</span> dokumen
+              </div>
+              {totalPages > 1 && (
+                <div>
+                  Halaman <span className="font-bold text-[#007BBB]">{currentPage}</span> dari {totalPages}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Content Loading State */}
           {loading ? (
             <div className="py-20 text-center">
@@ -160,54 +199,100 @@ export default function InformasiInvestorPage() {
               </p>
             </div>
           ) : (
-            /* Card Grid Layout */
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-white rounded-[10px] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col border border-slate-100 group"
-                >
-                  {/* Thumbnail / Cover Image */}
-                  <div className="h-[180px] bg-slate-50 relative overflow-hidden flex items-center justify-center p-3 border-b border-slate-100">
-                    <img
-                      src={item.image || 'https://kotasatuproperti.com/wp-content/uploads/2026/04/Kota-Satu-24-September-2024.png'}
-                      alt={item.title}
-                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-[17px] sm:text-[18px] font-bold text-slate-900 leading-snug line-clamp-3 mb-3 group-hover:text-[#007BBB] transition-colors">
-                        {item.title}
-                      </h3>
+            <>
+              {/* Card Grid Layout (Paginated) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {paginatedItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-[10px] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col border border-slate-100 group"
+                  >
+                    {/* Thumbnail / Cover Image with safe onError fallback */}
+                    <div className="h-[180px] bg-slate-50 relative overflow-hidden flex items-center justify-center p-3 border-b border-slate-100">
+                      <img
+                        src={item.image || '/images/orig-logo.png'}
+                        alt={item.title}
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = '/images/orig-logo.png';
+                        }}
+                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
                     </div>
 
-                    {/* Download Button / Link */}
-                    <div className="pt-3 border-t border-slate-100">
-                      <a
-                        href={item.downloadUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-[15px] font-bold tracking-[2px] text-[#007BBB] hover:text-[#000077] transition-colors uppercase group/link"
-                      >
-                        <span>{item.buttonText || 'Download >'}</span>
-                        <svg
-                          className="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                    {/* Body Content */}
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-[17px] sm:text-[18px] font-bold text-slate-900 leading-snug line-clamp-3 mb-3 group-hover:text-[#007BBB] transition-colors">
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      {/* Download Button / Link */}
+                      <div className="pt-3 border-t border-slate-100">
+                        <a
+                          href={item.downloadUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-[15px] font-bold tracking-[2px] text-[#007BBB] hover:text-[#000077] transition-colors uppercase group/link"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </a>
+                          <span>{item.buttonText || 'Download >'}</span>
+                          <svg
+                            className="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="mt-12 flex items-center justify-center gap-2">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 rounded-lg border border-slate-300 text-xs sm:text-sm font-bold text-slate-600 hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    &larr; Sebelumnya
+                  </button>
+
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
+                      const isActive = p === currentPage;
+                      return (
+                        <button
+                          key={p}
+                          onClick={() => handlePageChange(p)}
+                          className={`w-9 h-9 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+                            isActive
+                              ? 'bg-[#007BBB] text-white shadow-sm'
+                              : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                          }`}
+                        >
+                          {p}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 rounded-lg border border-slate-300 text-xs sm:text-sm font-bold text-slate-600 hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    Selanjutnya &rarr;
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
 
           {/* Keterangan Saham Footer Info Box if in Keterbukaan Informasi Lainnya */}
